@@ -1,0 +1,530 @@
+<!doctype html>
+<html lang="id" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Network Quest</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Rajdhani:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    .font-orbitron { font-family: 'Orbitron', monospace; }
+    .font-rajdhani { font-family: 'Rajdhani', sans-serif; }
+    
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+    @keyframes pulse-glow { 0%,100%{box-shadow:0 0 20px rgba(0,255,136,0.3)} 50%{box-shadow:0 0 40px rgba(0,255,136,0.6)} }
+    @keyframes slide-in { from{opacity:0;transform:translateX(-30px)} to{opacity:1;transform:translateX(0)} }
+    @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-5px)} 75%{transform:translateX(5px)} }
+    @keyframes celebrate { 0%{transform:scale(1)} 50%{transform:scale(1.1)} 100%{transform:scale(1)} }
+    @keyframes data-flow { 0%{stroke-dashoffset:20} 100%{stroke-dashoffset:0} }
+    @keyframes fade-up { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+    
+    .float-anim { animation: float 3s ease-in-out infinite; }
+    .pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
+    .slide-in { animation: slide-in 0.4s ease-out forwards; }
+    .shake { animation: shake 0.4s ease-in-out; }
+    .celebrate { animation: celebrate 0.5s ease-in-out; }
+    .fade-up { animation: fade-up 0.5s ease-out forwards; }
+    
+    .network-bg {
+      background: linear-gradient(135deg, #0a0e27 0%, #1a1f4e 30%, #0d1233 60%, #0a0e27 100%);
+    }
+    
+    .card-glass {
+      background: rgba(15, 23, 60, 0.8);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(0, 255, 136, 0.2);
+    }
+    
+    .btn-cyber {
+      background: linear-gradient(135deg, #00ff88, #00cc6a);
+      color: #0a0e27;
+      font-weight: 700;
+      transition: all 0.3s;
+    }
+    .btn-cyber:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,255,136,0.4); }
+    
+    .option-btn {
+      background: rgba(20, 30, 70, 0.9);
+      border: 2px solid rgba(0, 255, 136, 0.3);
+      transition: all 0.3s;
+    }
+    .option-btn:hover { border-color: #00ff88; background: rgba(0, 255, 136, 0.1); transform: translateX(5px); }
+    .option-btn.correct { border-color: #00ff88; background: rgba(0, 255, 136, 0.2); }
+    .option-btn.wrong { border-color: #ff4466; background: rgba(255, 68, 102, 0.2); }
+    
+    .progress-bar { background: linear-gradient(90deg, #00ff88, #00ccff); }
+    
+    .node-dot {
+      width: 8px; height: 8px; background: #00ff88; border-radius: 50%;
+      position: absolute; animation: float 2s ease-in-out infinite;
+    }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full">
+  <div id="app" class="h-full w-full network-bg overflow-auto font-rajdhani text-white relative"><!-- Decorative Network Nodes -->
+   <div class="absolute inset-0 overflow-hidden pointer-events-none">
+    <svg class="absolute inset-0 w-full h-full opacity-20"><defs>
+      <lineargradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+       <stop offset="0%" style="stop-color:#00ff88;stop-opacity:0.5" />
+       <stop offset="100%" style="stop-color:#00ccff;stop-opacity:0.1" />
+      </lineargradient>
+     </defs> <line x1="10%" y1="20%" x2="40%" y2="35%" stroke="url(#lineGrad)" stroke-width="1" stroke-dasharray="5,5" /> <line x1="60%" y1="15%" x2="85%" y2="40%" stroke="url(#lineGrad)" stroke-width="1" stroke-dasharray="5,5" /> <line x1="20%" y1="70%" x2="50%" y2="85%" stroke="url(#lineGrad)" stroke-width="1" stroke-dasharray="5,5" /> <line x1="70%" y1="60%" x2="90%" y2="80%" stroke="url(#lineGrad)" stroke-width="1" stroke-dasharray="5,5" /> <circle cx="10%" cy="20%" r="4" fill="#00ff88" opacity="0.6" /> <circle cx="40%" cy="35%" r="3" fill="#00ccff" opacity="0.5" /> <circle cx="60%" cy="15%" r="5" fill="#00ff88" opacity="0.4" /> <circle cx="85%" cy="40%" r="3" fill="#00ccff" opacity="0.6" /> <circle cx="20%" cy="70%" r="4" fill="#00ff88" opacity="0.5" /> <circle cx="90%" cy="80%" r="3" fill="#00ccff" opacity="0.4" />
+    </svg>
+   </div><!-- SCREEN: Start -->
+   <div id="screen-start" class="relative z-10 flex flex-col items-center justify-center min-h-full p-6">
+    <div class="text-center fade-up"><!-- Network Icon SVG -->
+     <div class="float-anim mb-6 inline-block">
+      <svg width="120" height="120" viewbox="0 0 120 120"><circle cx="60" cy="60" r="50" fill="none" stroke="#00ff88" stroke-width="2" opacity="0.3" /> <circle cx="60" cy="60" r="35" fill="none" stroke="#00ccff" stroke-width="1" opacity="0.2" /> <!-- Central server --> <rect x="48" y="48" width="24" height="24" rx="4" fill="#0a0e27" stroke="#00ff88" stroke-width="2" /> <line x1="52" y1="55" x2="68" y2="55" stroke="#00ff88" stroke-width="1.5" /> <line x1="52" y1="60" x2="68" y2="60" stroke="#00ccff" stroke-width="1.5" /> <line x1="52" y1="65" x2="62" y2="65" stroke="#00ff88" stroke-width="1.5" /> <!-- Nodes --> <circle cx="60" cy="20" r="6" fill="#0a0e27" stroke="#00ccff" stroke-width="2" /> <circle cx="95" cy="60" r="6" fill="#0a0e27" stroke="#00ff88" stroke-width="2" /> <circle cx="60" cy="100" r="6" fill="#0a0e27" stroke="#00ccff" stroke-width="2" /> <circle cx="25" cy="60" r="6" fill="#0a0e27" stroke="#00ff88" stroke-width="2" /> <!-- Connections --> <line x1="60" y1="26" x2="60" y2="48" stroke="#00ccff" stroke-width="1.5" stroke-dasharray="3,2" /> <line x1="89" y1="60" x2="72" y2="60" stroke="#00ff88" stroke-width="1.5" stroke-dasharray="3,2" /> <line x1="60" y1="72" x2="60" y2="94" stroke="#00ccff" stroke-width="1.5" stroke-dasharray="3,2" /> <line x1="31" y1="60" x2="48" y2="60" stroke="#00ff88" stroke-width="1.5" stroke-dasharray="3,2" />
+      </svg>
+     </div>
+     <h1 id="title-text" class="font-orbitron text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-cyan-400 mb-3">Network Quest</h1>
+     <p id="welcome-text" class="text-lg md:text-xl text-gray-300 mb-8 max-w-md mx-auto">Uji pengetahuanmu tentang Jaringan Komputer!</p>
+     <p class="text-sm text-gray-500 mb-6">Materi Informatika Kelas XII</p>
+     <div class="flex flex-col sm:flex-row gap-4 justify-center"><button onclick="startGame('quiz')" class="btn-cyber px-8 py-3 rounded-xl font-orbitron text-sm pulse-glow"> 🎯 Quiz Mode </button> <button onclick="startGame('match')" class="btn-cyber px-8 py-3 rounded-xl font-orbitron text-sm" style="background:linear-gradient(135deg,#00ccff,#0088cc)"> 🔗 Cocokkan Topologi </button> <button onclick="showLearn()" class="px-8 py-3 rounded-xl font-orbitron text-sm border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400/10 transition"> 📖 Materi </button>
+     </div>
+    </div>
+   </div><!-- SCREEN: Learn -->
+   <div id="screen-learn" class="relative z-10 hidden min-h-full p-4 md:p-8">
+    <div class="max-w-4xl mx-auto"><button onclick="goHome()" class="mb-6 text-cyan-400 hover:text-white transition flex items-center gap-2"> <i data-lucide="arrow-left" style="width:20px;height:20px"></i> Kembali </button>
+     <h2 class="font-orbitron text-2xl md:text-3xl text-green-400 mb-6">📖 Rangkuman Materi Jaringan</h2>
+     <div class="space-y-6" id="learn-content"><!-- Card 1 -->
+      <div class="card-glass rounded-2xl p-6 slide-in" style="animation-delay:0.1s">
+       <div class="flex items-start gap-4">
+        <div class="flex-shrink-0">
+         <svg width="60" height="60" viewbox="0 0 60 60"><rect x="5" y="15" width="50" height="30" rx="5" fill="#0a0e27" stroke="#00ff88" stroke-width="2" /> <line x1="12" y1="24" x2="48" y2="24" stroke="#00ff88" stroke-width="1.5" /> <line x1="12" y1="30" x2="48" y2="30" stroke="#00ccff" stroke-width="1.5" /> <line x1="12" y1="36" x2="35" y2="36" stroke="#00ff88" stroke-width="1.5" /> <circle cx="44" cy="36" r="3" fill="#00ff88" />
+         </svg>
+        </div>
+        <div>
+         <h3 class="font-orbitron text-lg text-green-400 mb-2">Topologi Jaringan</h3>
+         <p class="text-gray-300 text-sm leading-relaxed"><strong class="text-white">Star:</strong> Semua node terhubung ke hub/switch pusat. <strong class="text-white">Bus:</strong> Semua node terhubung ke satu kabel utama. <strong class="text-white">Ring:</strong> Node membentuk lingkaran tertutup. <strong class="text-white">Mesh:</strong> Setiap node terhubung ke semua node lain. <strong class="text-white">Tree:</strong> Gabungan topologi star yang disusun hierarkis.</p>
+        </div>
+       </div>
+      </div><!-- Card 2 -->
+      <div class="card-glass rounded-2xl p-6 slide-in" style="animation-delay:0.2s">
+       <div class="flex items-start gap-4">
+        <div class="flex-shrink-0">
+         <svg width="60" height="60" viewbox="0 0 60 60"><rect x="5" y="5" width="50" height="50" rx="8" fill="#0a0e27" stroke="#00ccff" stroke-width="2" /> <text x="30" y="20" font-size="8" fill="#00ff88" text-anchor="middle" font-family="monospace">
+           7-APP
+          </text> <text x="30" y="30" font-size="8" fill="#00ccff" text-anchor="middle" font-family="monospace">
+           4-TCP
+          </text> <text x="30" y="40" font-size="8" fill="#00ff88" text-anchor="middle" font-family="monospace">
+           3-IP
+          </text> <text x="30" y="50" font-size="8" fill="#00ccff" text-anchor="middle" font-family="monospace">
+           1-PHY
+          </text>
+         </svg>
+        </div>
+        <div>
+         <h3 class="font-orbitron text-lg text-cyan-400 mb-2">Model OSI &amp; TCP/IP</h3>
+         <p class="text-gray-300 text-sm leading-relaxed"><strong class="text-white">OSI 7 Layer:</strong> Physical, Data Link, Network, Transport, Session, Presentation, Application. <strong class="text-white">TCP/IP 4 Layer:</strong> Network Access, Internet, Transport, Application. Protokol penting: HTTP, FTP, SMTP, DNS, TCP, UDP, IP, ARP.</p>
+        </div>
+       </div>
+      </div><!-- Card 3 -->
+      <div class="card-glass rounded-2xl p-6 slide-in" style="animation-delay:0.3s">
+       <div class="flex items-start gap-4">
+        <div class="flex-shrink-0">
+         <svg width="60" height="60" viewbox="0 0 60 60"><text x="30" y="20" font-size="9" fill="#00ff88" text-anchor="middle" font-family="monospace">
+           192.168
+          </text> <text x="30" y="35" font-size="9" fill="#00ccff" text-anchor="middle" font-family="monospace">
+           .1.1/24
+          </text> <rect x="10" y="42" width="40" height="12" rx="3" fill="none" stroke="#00ff88" stroke-width="1.5" /> <text x="30" y="51" font-size="7" fill="#00ff88" text-anchor="middle" font-family="monospace">
+           SUBNET
+          </text>
+         </svg>
+        </div>
+        <div>
+         <h3 class="font-orbitron text-lg text-green-400 mb-2">IP Address &amp; Subnetting</h3>
+         <p class="text-gray-300 text-sm leading-relaxed"><strong class="text-white">IPv4:</strong> 32-bit, 4 oktet (0-255). <strong class="text-white">Kelas:</strong> A (1-126), B (128-191), C (192-223). <strong class="text-white">Subnet Mask:</strong> Membagi network dan host. <strong class="text-white">CIDR:</strong> Notasi /prefix untuk subnet. <strong class="text-white">Private IP:</strong> 10.x.x.x, 172.16-31.x.x, 192.168.x.x</p>
+        </div>
+       </div>
+      </div><!-- Card 4 -->
+      <div class="card-glass rounded-2xl p-6 slide-in" style="animation-delay:0.4s">
+       <div class="flex items-start gap-4">
+        <div class="flex-shrink-0">
+         <svg width="60" height="60" viewbox="0 0 60 60"><rect x="20" y="5" width="20" height="15" rx="3" fill="#0a0e27" stroke="#ff4466" stroke-width="2" /> <rect x="5" y="40" width="20" height="15" rx="3" fill="#0a0e27" stroke="#00ff88" stroke-width="2" /> <rect x="35" y="40" width="20" height="15" rx="3" fill="#0a0e27" stroke="#00ff88" stroke-width="2" /> <line x1="30" y1="20" x2="15" y2="40" stroke="#00ccff" stroke-width="1.5" /> <line x1="30" y1="20" x2="45" y2="40" stroke="#00ccff" stroke-width="1.5" /> <text x="30" y="14" font-size="6" fill="#ff4466" text-anchor="middle">
+           🔥
+          </text>
+         </svg>
+        </div>
+        <div>
+         <h3 class="font-orbitron text-lg text-red-400 mb-2">Keamanan Jaringan</h3>
+         <p class="text-gray-300 text-sm leading-relaxed"><strong class="text-white">Firewall:</strong> Memfilter lalu lintas jaringan. <strong class="text-white">Enkripsi:</strong> SSL/TLS, WPA2/WPA3. <strong class="text-white">Ancaman:</strong> DDoS, Man-in-the-Middle, Phishing, Malware. <strong class="text-white">VPN:</strong> Koneksi aman melalui jaringan publik.</p>
+        </div>
+       </div>
+      </div><!-- Card 5 -->
+      <div class="card-glass rounded-2xl p-6 slide-in" style="animation-delay:0.5s">
+       <div class="flex items-start gap-4">
+        <div class="flex-shrink-0">
+         <svg width="60" height="60" viewbox="0 0 60 60"><circle cx="30" cy="30" r="22" fill="none" stroke="#00ccff" stroke-width="2" /> <circle cx="30" cy="30" r="12" fill="none" stroke="#00ff88" stroke-width="1.5" /> <path d="M8 30 Q30 15 52 30" fill="none" stroke="#00ff88" stroke-width="1" opacity="0.7" /> <path d="M8 30 Q30 45 52 30" fill="none" stroke="#00ccff" stroke-width="1" opacity="0.7" /> <line x1="30" y1="8" x2="30" y2="52" stroke="#00ff88" stroke-width="1" opacity="0.5" />
+         </svg>
+        </div>
+        <div>
+         <h3 class="font-orbitron text-lg text-cyan-400 mb-2">Perangkat Jaringan</h3>
+         <p class="text-gray-300 text-sm leading-relaxed"><strong class="text-white">Router:</strong> Menghubungkan jaringan berbeda, routing paket. <strong class="text-white">Switch:</strong> Menghubungkan perangkat dalam LAN, forwarding frame. <strong class="text-white">Hub:</strong> Broadcast semua port. <strong class="text-white">Access Point:</strong> Koneksi wireless. <strong class="text-white">Modem:</strong> Modulasi-demodulasi sinyal.</p>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div><!-- SCREEN: Quiz -->
+   <div id="screen-quiz" class="relative z-10 hidden min-h-full p-4 md:p-8">
+    <div class="max-w-2xl mx-auto"><!-- Quiz Header -->
+     <div class="flex items-center justify-between mb-6"><button onclick="goHome()" class="text-cyan-400 hover:text-white transition"> <i data-lucide="arrow-left" style="width:24px;height:24px"></i> </button>
+      <div class="flex items-center gap-4"><span id="quiz-score" class="font-orbitron text-green-400 text-lg">Score: 0</span> <span id="quiz-progress" class="text-gray-400 text-sm">1/15</span>
+      </div>
+     </div><!-- Progress Bar -->
+     <div class="w-full h-2 bg-gray-800 rounded-full mb-8 overflow-hidden">
+      <div id="quiz-bar" class="progress-bar h-full rounded-full transition-all duration-500" style="width:0%"></div>
+     </div><!-- Question Area -->
+     <div id="quiz-question-area" class="card-glass rounded-2xl p-6 md:p-8 mb-6">
+      <div id="quiz-illustration" class="flex justify-center mb-4"></div>
+      <p id="quiz-question" class="font-orbitron text-lg md:text-xl text-white text-center"></p>
+     </div><!-- Options -->
+     <div id="quiz-options" class="space-y-3"></div><!-- Next Button -->
+     <div id="quiz-next" class="hidden text-center mt-6"><button onclick="nextQuestion()" class="btn-cyber px-8 py-3 rounded-xl font-orbitron text-sm">Selanjutnya →</button>
+     </div>
+    </div>
+   </div><!-- SCREEN: Match Game -->
+   <div id="screen-match" class="relative z-10 hidden min-h-full p-4 md:p-8">
+    <div class="max-w-3xl mx-auto">
+     <div class="flex items-center justify-between mb-6"><button onclick="goHome()" class="text-cyan-400 hover:text-white transition"> <i data-lucide="arrow-left" style="width:24px;height:24px"></i> </button> <span id="match-score" class="font-orbitron text-green-400 text-lg">Cocokkan: 0/5</span>
+     </div>
+     <h2 class="font-orbitron text-xl text-center text-cyan-400 mb-2">🔗 Cocokkan Topologi</h2>
+     <p class="text-center text-gray-400 text-sm mb-6">Pilih topologi lalu pilih deskripsinya</p>
+     <div id="match-area" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+     <div id="match-result" class="hidden text-center mt-8"></div>
+    </div>
+   </div><!-- SCREEN: Result -->
+   <div id="screen-result" class="relative z-10 hidden flex-col items-center justify-center min-h-full p-6">
+    <div class="text-center card-glass rounded-3xl p-8 md:p-12 max-w-md mx-auto celebrate">
+     <div id="result-icon" class="text-6xl mb-4"></div>
+     <h2 id="result-title" class="font-orbitron text-2xl md:text-3xl text-green-400 mb-3"></h2>
+     <p id="result-desc" class="text-gray-300 mb-2"></p>
+     <p id="result-score" class="font-orbitron text-4xl text-white mb-6"></p>
+     <div class="flex flex-col sm:flex-row gap-3 justify-center"><button onclick="goHome()" class="btn-cyber px-6 py-3 rounded-xl font-orbitron text-sm">🏠 Menu Utama</button> <button onclick="startGame(lastMode)" class="px-6 py-3 rounded-xl font-orbitron text-sm border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400/10 transition">🔄 Main Lagi</button>
+     </div>
+    </div>
+   </div>
+  </div>
+  <script>
+// Game State
+let currentQuestion = 0;
+let score = 0;
+let questions = [];
+let lastMode = 'quiz';
+let matchSelected = null;
+let matchedCount = 0;
+
+// Questions Bank
+const allQuestions = [
+  { q: "Topologi yang menghubungkan semua node ke satu titik pusat (hub/switch) adalah...", a: "Star", opts: ["Star", "Bus", "Ring", "Mesh"], cat: "topology" },
+  { q: "Layer ke-3 pada model OSI yang bertanggung jawab atas routing paket adalah...", a: "Network", opts: ["Transport", "Network", "Data Link", "Session"], cat: "osi" },
+  { q: "Protokol yang digunakan untuk mengirim email adalah...", a: "SMTP", opts: ["HTTP", "FTP", "SMTP", "DNS"], cat: "protocol" },
+  { q: "Berapa jumlah layer pada model OSI?", a: "7", opts: ["4", "5", "6", "7"], cat: "osi" },
+  { q: "Perangkat yang menghubungkan dua jaringan berbeda dan melakukan routing adalah...", a: "Router", opts: ["Switch", "Hub", "Router", "Repeater"], cat: "device" },
+  { q: "IP Address 192.168.1.1 termasuk kelas...", a: "C", opts: ["A", "B", "C", "D"], cat: "ip" },
+  { q: "Subnet mask default untuk IP kelas C adalah...", a: "255.255.255.0", opts: ["255.0.0.0", "255.255.0.0", "255.255.255.0", "255.255.255.128"], cat: "ip" },
+  { q: "Protokol pada layer Transport yang menjamin pengiriman data adalah...", a: "TCP", opts: ["UDP", "TCP", "IP", "ARP"], cat: "protocol" },
+  { q: "Teknologi keamanan untuk mengenkripsi koneksi wireless modern adalah...", a: "WPA3", opts: ["WEP", "WPA", "WPA2", "WPA3"], cat: "security" },
+  { q: "Serangan yang membanjiri server dengan request palsu disebut...", a: "DDoS", opts: ["Phishing", "DDoS", "Spoofing", "Sniffing"], cat: "security" },
+  { q: "Port default untuk HTTP adalah...", a: "80", opts: ["21", "25", "80", "443"], cat: "protocol" },
+  { q: "Perangkat Layer 2 yang meneruskan frame berdasarkan MAC address adalah...", a: "Switch", opts: ["Router", "Switch", "Hub", "Gateway"], cat: "device" },
+  { q: "Notasi CIDR /24 berarti subnet mask...", a: "255.255.255.0", opts: ["255.255.0.0", "255.255.255.0", "255.255.255.128", "255.255.255.192"], cat: "ip" },
+  { q: "VPN berfungsi untuk...", a: "Membuat koneksi aman melalui jaringan publik", opts: ["Mempercepat internet", "Membuat koneksi aman melalui jaringan publik", "Menghapus virus", "Memperbesar bandwidth"], cat: "security" },
+  { q: "Topologi yang jika satu kabel putus maka seluruh jaringan terganggu adalah...", a: "Bus", opts: ["Star", "Bus", "Mesh", "Tree"], cat: "topology" },
+  { q: "DNS berfungsi untuk...", a: "Menerjemahkan domain ke IP address", opts: ["Mengirim email", "Menerjemahkan domain ke IP address", "Transfer file", "Enkripsi data"], cat: "protocol" },
+  { q: "Layer paling bawah pada model OSI adalah...", a: "Physical", opts: ["Data Link", "Physical", "Network", "Transport"], cat: "osi" },
+  { q: "Berapa jumlah layer pada model TCP/IP?", a: "4", opts: ["4", "5", "6", "7"], cat: "osi" },
+  { q: "Bandwidth diukur dalam satuan...", a: "bps (bit per second)", opts: ["Hz", "bps (bit per second)", "Volt", "Watt"], cat: "device" },
+  { q: "Firewall berfungsi untuk...", a: "Memfilter lalu lintas jaringan", opts: ["Mempercepat koneksi", "Memfilter lalu lintas jaringan", "Menyimpan data", "Routing paket"], cat: "security" }
+];
+
+// Match pairs
+const matchPairs = [
+  { topology: "Star", desc: "Semua node terhubung ke satu titik pusat" },
+  { topology: "Bus", desc: "Semua node terhubung ke satu kabel utama" },
+  { topology: "Ring", desc: "Node membentuk lingkaran tertutup" },
+  { topology: "Mesh", desc: "Setiap node terhubung ke semua node lain" },
+  { topology: "Tree", desc: "Hierarki gabungan beberapa topologi star" }
+];
+
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i+1)); [a[i],a[j]]=[a[j],a[i]]; }
+  return a;
+}
+
+function showScreen(id) {
+  document.querySelectorAll('[id^="screen-"]').forEach(s => { s.classList.add('hidden'); s.classList.remove('flex'); });
+  const el = document.getElementById('screen-' + id);
+  el.classList.remove('hidden');
+  if (id === 'result') el.classList.add('flex');
+}
+
+function goHome() { showScreen('start'); }
+
+function showLearn() { showScreen('learn'); }
+
+function startGame(mode) {
+  lastMode = mode;
+  if (mode === 'quiz') startQuiz();
+  else startMatch();
+}
+
+// QUIZ
+function startQuiz() {
+  questions = shuffle(allQuestions).slice(0, 15);
+  currentQuestion = 0;
+  score = 0;
+  showScreen('quiz');
+  renderQuestion();
+}
+
+function getIllustration(cat) {
+  const svgs = {
+    topology: `<svg width="80" height="60" viewBox="0 0 80 60"><circle cx="40" cy="30" r="8" fill="#0a0e27" stroke="#00ff88" stroke-width="2"/><circle cx="15" cy="15" r="5" fill="#0a0e27" stroke="#00ccff" stroke-width="1.5"/><circle cx="65" cy="15" r="5" fill="#0a0e27" stroke="#00ccff" stroke-width="1.5"/><circle cx="15" cy="45" r="5" fill="#0a0e27" stroke="#00ccff" stroke-width="1.5"/><circle cx="65" cy="45" r="5" fill="#0a0e27" stroke="#00ccff" stroke-width="1.5"/><line x1="40" y1="30" x2="15" y2="15" stroke="#00ff88" stroke-width="1"/><line x1="40" y1="30" x2="65" y2="15" stroke="#00ff88" stroke-width="1"/><line x1="40" y1="30" x2="15" y2="45" stroke="#00ff88" stroke-width="1"/><line x1="40" y1="30" x2="65" y2="45" stroke="#00ff88" stroke-width="1"/></svg>`,
+    osi: `<svg width="80" height="60" viewBox="0 0 80 60"><rect x="15" y="5" width="50" height="7" rx="2" fill="#00ff88" opacity="0.8"/><rect x="15" y="14" width="50" height="7" rx="2" fill="#00ccff" opacity="0.7"/><rect x="15" y="23" width="50" height="7" rx="2" fill="#00ff88" opacity="0.6"/><rect x="15" y="32" width="50" height="7" rx="2" fill="#00ccff" opacity="0.5"/><rect x="15" y="41" width="50" height="7" rx="2" fill="#00ff88" opacity="0.4"/><rect x="15" y="50" width="50" height="7" rx="2" fill="#00ccff" opacity="0.3"/></svg>`,
+    protocol: `<svg width="80" height="60" viewBox="0 0 80 60"><rect x="5" y="20" width="25" height="20" rx="4" fill="#0a0e27" stroke="#00ff88" stroke-width="2"/><rect x="50" y="20" width="25" height="20" rx="4" fill="#0a0e27" stroke="#00ccff" stroke-width="2"/><path d="M30 28 L50 28" stroke="#00ff88" stroke-width="2" stroke-dasharray="3,2"/><path d="M50 32 L30 32" stroke="#00ccff" stroke-width="2" stroke-dasharray="3,2"/><text x="17" y="34" font-size="7" fill="#00ff88" font-family="monospace">SRC</text><text x="58" y="34" font-size="7" fill="#00ccff" font-family="monospace">DST</text></svg>`,
+    ip: `<svg width="80" height="60" viewBox="0 0 80 60"><text x="40" y="25" font-size="10" fill="#00ff88" text-anchor="middle" font-family="monospace">192.168</text><text x="40" y="40" font-size="10" fill="#00ccff" text-anchor="middle" font-family="monospace">.1.0/24</text><rect x="15" y="45" width="50" height="10" rx="3" fill="none" stroke="#00ff88" stroke-width="1.5" stroke-dasharray="3,2"/></svg>`,
+    security: `<svg width="80" height="60" viewBox="0 0 80 60"><path d="M40 8 L55 18 L55 35 Q55 48 40 52 Q25 48 25 35 L25 18 Z" fill="#0a0e27" stroke="#ff4466" stroke-width="2"/><text x="40" y="36" font-size="16" text-anchor="middle">🔒</text></svg>`,
+    device: `<svg width="80" height="60" viewBox="0 0 80 60"><rect x="25" y="15" width="30" height="30" rx="5" fill="#0a0e27" stroke="#00ccff" stroke-width="2"/><circle cx="32" cy="24" r="2" fill="#00ff88"/><circle cx="40" cy="24" r="2" fill="#00ff88"/><circle cx="48" cy="24" r="2" fill="#00ff88"/><line x1="30" y1="30" x2="50" y2="30" stroke="#00ccff" stroke-width="0.5"/><circle cx="32" cy="36" r="2" fill="#00ccff"/><circle cx="40" cy="36" r="2" fill="#00ccff"/><circle cx="48" cy="36" r="2" fill="#00ccff"/></svg>`
+  };
+  return svgs[cat] || svgs.protocol;
+}
+
+function renderQuestion() {
+  const q = questions[currentQuestion];
+  document.getElementById('quiz-score').textContent = `Score: ${score}`;
+  document.getElementById('quiz-progress').textContent = `${currentQuestion+1}/15`;
+  document.getElementById('quiz-bar').style.width = `${((currentQuestion)/15)*100}%`;
+  document.getElementById('quiz-illustration').innerHTML = getIllustration(q.cat);
+  document.getElementById('quiz-question').textContent = q.q;
+  document.getElementById('quiz-next').classList.add('hidden');
+  
+  const opts = shuffle(q.opts);
+  const container = document.getElementById('quiz-options');
+  container.innerHTML = '';
+  opts.forEach((opt, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'option-btn w-full text-left px-5 py-4 rounded-xl text-white font-rajdhani text-base md:text-lg flex items-center gap-3 slide-in';
+    btn.style.animationDelay = `${i * 0.1}s`;
+    btn.innerHTML = `<span class="w-8 h-8 flex items-center justify-center rounded-full border border-green-400/50 text-green-400 font-orbitron text-xs">${String.fromCharCode(65+i)}</span> ${opt}`;
+    btn.onclick = () => checkAnswer(opt, btn);
+    container.appendChild(btn);
+  });
+}
+
+function checkAnswer(selected, btn) {
+  const q = questions[currentQuestion];
+  const allBtns = document.querySelectorAll('#quiz-options .option-btn');
+  allBtns.forEach(b => { b.onclick = null; b.style.pointerEvents = 'none'; });
+  
+  if (selected === q.a) {
+    score += 10;
+    btn.classList.add('correct');
+    btn.innerHTML = `<span class="w-8 h-8 flex items-center justify-center rounded-full bg-green-500 text-white font-orbitron text-xs">✓</span> ${selected}`;
+  } else {
+    btn.classList.add('wrong');
+    btn.innerHTML = `<span class="w-8 h-8 flex items-center justify-center rounded-full bg-red-500 text-white font-orbitron text-xs">✗</span> ${selected}`;
+    btn.parentElement.classList.add('shake');
+    allBtns.forEach(b => {
+      if (b.textContent.includes(q.a)) b.classList.add('correct');
+    });
+  }
+  
+  document.getElementById('quiz-score').textContent = `Score: ${score}`;
+  document.getElementById('quiz-next').classList.remove('hidden');
+}
+
+function nextQuestion() {
+  currentQuestion++;
+  if (currentQuestion >= 15) {
+    showResult();
+  } else {
+    renderQuestion();
+  }
+}
+
+function showResult() {
+  showScreen('result');
+  const pct = (score / 150) * 100;
+  let icon, title, desc;
+  if (pct >= 80) { icon = '🏆'; title = 'Luar Biasa!'; desc = 'Kamu menguasai materi jaringan!'; }
+  else if (pct >= 60) { icon = '⭐'; title = 'Bagus!'; desc = 'Terus belajar, hampir sempurna!'; }
+  else if (pct >= 40) { icon = '💪'; title = 'Lumayan!'; desc = 'Coba baca lagi materinya ya!'; }
+  else { icon = '📚'; title = 'Semangat!'; desc = 'Baca materi dan coba lagi!'; }
+  
+  document.getElementById('result-icon').textContent = icon;
+  document.getElementById('result-title').textContent = title;
+  document.getElementById('result-desc').textContent = desc;
+  document.getElementById('result-score').textContent = `${score}/150`;
+}
+
+// MATCH GAME
+function startMatch() {
+  matchSelected = null;
+  matchedCount = 0;
+  showScreen('match');
+  document.getElementById('match-result').classList.add('hidden');
+  document.getElementById('match-score').textContent = 'Cocokkan: 0/5';
+  renderMatch();
+}
+
+function renderMatch() {
+  const area = document.getElementById('match-area');
+  area.innerHTML = '';
+  
+  const leftItems = shuffle(matchPairs);
+  const rightItems = shuffle(matchPairs);
+  
+  // Left column - topologies
+  const leftCol = document.createElement('div');
+  leftCol.className = 'space-y-3';
+  leftCol.innerHTML = '<p class="text-green-400 font-orbitron text-sm mb-2 text-center">Topologi</p>';
+  leftItems.forEach(item => {
+    const btn = document.createElement('button');
+    btn.className = 'option-btn w-full text-center px-4 py-3 rounded-xl text-white font-rajdhani text-base';
+    btn.dataset.type = 'topology';
+    btn.dataset.value = item.topology;
+    btn.textContent = item.topology;
+    btn.onclick = () => selectMatch(btn);
+    leftCol.appendChild(btn);
+  });
+  
+  // Right column - descriptions
+  const rightCol = document.createElement('div');
+  rightCol.className = 'space-y-3';
+  rightCol.innerHTML = '<p class="text-cyan-400 font-orbitron text-sm mb-2 text-center">Deskripsi</p>';
+  rightItems.forEach(item => {
+    const btn = document.createElement('button');
+    btn.className = 'option-btn w-full text-center px-4 py-3 rounded-xl text-white font-rajdhani text-sm';
+    btn.dataset.type = 'desc';
+    btn.dataset.value = item.topology;
+    btn.textContent = item.desc;
+    btn.onclick = () => selectMatch(btn);
+    rightCol.appendChild(btn);
+  });
+  
+  area.appendChild(leftCol);
+  area.appendChild(rightCol);
+}
+
+function selectMatch(btn) {
+  if (btn.classList.contains('correct')) return;
+  
+  if (!matchSelected) {
+    matchSelected = btn;
+    btn.style.borderColor = '#ffcc00';
+    btn.style.background = 'rgba(255,204,0,0.1)';
+  } else {
+    if (matchSelected.dataset.type === btn.dataset.type) {
+      matchSelected.style.borderColor = '';
+      matchSelected.style.background = '';
+      matchSelected = btn;
+      btn.style.borderColor = '#ffcc00';
+      btn.style.background = 'rgba(255,204,0,0.1)';
+      return;
+    }
+    
+    const val1 = matchSelected.dataset.value;
+    const val2 = btn.dataset.value;
+    
+    if (val1 === val2) {
+      matchSelected.classList.add('correct');
+      matchSelected.style.borderColor = '#00ff88';
+      matchSelected.style.background = 'rgba(0,255,136,0.2)';
+      matchSelected.style.pointerEvents = 'none';
+      btn.classList.add('correct');
+      btn.style.borderColor = '#00ff88';
+      btn.style.background = 'rgba(0,255,136,0.2)';
+      btn.style.pointerEvents = 'none';
+      matchedCount++;
+      document.getElementById('match-score').textContent = `Cocokkan: ${matchedCount}/5`;
+      
+      if (matchedCount >= 5) {
+        setTimeout(() => {
+          score = 50;
+          lastMode = 'match';
+          document.getElementById('result-icon').textContent = '🎉';
+          document.getElementById('result-title').textContent = 'Sempurna!';
+          document.getElementById('result-desc').textContent = 'Semua topologi berhasil dicocokkan!';
+          document.getElementById('result-score').textContent = '5/5';
+          showScreen('result');
+        }, 800);
+      }
+    } else {
+      matchSelected.style.borderColor = '#ff4466';
+      matchSelected.style.background = 'rgba(255,68,102,0.1)';
+      btn.style.borderColor = '#ff4466';
+      btn.style.background = 'rgba(255,68,102,0.1)';
+      const prev = matchSelected;
+      setTimeout(() => {
+        prev.style.borderColor = '';
+        prev.style.background = '';
+        btn.style.borderColor = '';
+        btn.style.background = '';
+      }, 600);
+    }
+    matchSelected = null;
+  }
+}
+
+// Element SDK
+const defaultConfig = {
+  game_title: 'Network Quest',
+  welcome_text: 'Uji pengetahuanmu tentang Jaringan Komputer!',
+  background_color: '#0a0e27',
+  accent_color: '#00ff88',
+  secondary_color: '#00ccff',
+  text_color: '#ffffff',
+  surface_color: '#0f173c',
+  font_family: 'Rajdhani',
+  font_size: 16
+};
+
+window.elementSdk.init({
+  defaultConfig,
+  onConfigChange: async (config) => {
+    const title = config.game_title || defaultConfig.game_title;
+    const welcome = config.welcome_text || defaultConfig.welcome_text;
+    const bg = config.background_color || defaultConfig.background_color;
+    const accent = config.accent_color || defaultConfig.accent_color;
+    const secondary = config.secondary_color || defaultConfig.secondary_color;
+    const textCol = config.text_color || defaultConfig.text_color;
+    const font = config.font_family || defaultConfig.font_family;
+    const size = config.font_size || defaultConfig.font_size;
+
+    document.getElementById('title-text').textContent = title;
+    document.getElementById('welcome-text').textContent = welcome;
+    document.getElementById('app').style.background = `linear-gradient(135deg, ${bg} 0%, ${config.surface_color || defaultConfig.surface_color} 50%, ${bg} 100%)`;
+    document.getElementById('app').style.fontFamily = `${font}, sans-serif`;
+    document.getElementById('app').style.fontSize = `${size}px`;
+    document.getElementById('app').style.color = textCol;
+  },
+  mapToCapabilities: (config) => ({
+    recolorables: [
+      { get: () => config.background_color || defaultConfig.background_color, set: (v) => { config.background_color = v; window.elementSdk.setConfig({ background_color: v }); }},
+      { get: () => config.surface_color || defaultConfig.surface_color, set: (v) => { config.surface_color = v; window.elementSdk.setConfig({ surface_color: v }); }},
+      { get: () => config.text_color || defaultConfig.text_color, set: (v) => { config.text_color = v; window.elementSdk.setConfig({ text_color: v }); }},
+      { get: () => config.accent_color || defaultConfig.accent_color, set: (v) => { config.accent_color = v; window.elementSdk.setConfig({ accent_color: v }); }},
+      { get: () => config.secondary_color || defaultConfig.secondary_color, set: (v) => { config.secondary_color = v; window.elementSdk.setConfig({ secondary_color: v }); }}
+    ],
+    borderables: [],
+    fontEditable: { get: () => config.font_family || defaultConfig.font_family, set: (v) => { config.font_family = v; window.elementSdk.setConfig({ font_family: v }); }},
+    fontSizeable: { get: () => config.font_size || defaultConfig.font_size, set: (v) => { config.font_size = v; window.elementSdk.setConfig({ font_size: v }); }}
+  }),
+  mapToEditPanelValues: (config) => new Map([
+    ["game_title", config.game_title || defaultConfig.game_title],
+    ["welcome_text", config.welcome_text || defaultConfig.welcome_text]
+  ])
+});
+
+lucide.createIcons();
+</script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9ef192ba762f6d1e',t:'MTc3NjY2MTA5OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
