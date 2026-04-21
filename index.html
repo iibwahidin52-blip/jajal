@@ -66,11 +66,9 @@
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
  </head>
  <body class="h-full">
-  <div id="app" class="h-full w-full network-bg overflow-auto font-rajdhani text-white relative">
-   <!-- Decorative Network Nodes -->
+  <div id="app" class="h-full w-full network-bg overflow-auto font-rajdhani text-white relative"><!-- Decorative Network Nodes -->
    <div class="absolute inset-0 overflow-hidden pointer-events-none">
-    <svg class="absolute inset-0 w-full h-full opacity-20">
-     <defs>
+    <svg class="absolute inset-0 w-full h-full opacity-20"><defs>
       <lineargradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="100%">
        <stop offset="0%" style="stop-color:#00ff88;stop-opacity:0.5" />
        <stop offset="100%" style="stop-color:#00ccff;stop-opacity:0.1" />
@@ -79,32 +77,26 @@
     </svg>
    </div><!-- SCREEN: Start -->
    <div id="screen-start" class="relative z-10 flex flex-col items-center justify-center min-h-full p-6">
-    <div class="text-center fade-up">
-     <!-- Network Icon SVG -->
+    <div class="text-center fade-up"><!-- Network Icon SVG -->
      <div class="float-anim mb-6 inline-block">
-      <svg width="120" height="120" viewbox="0 0 120 120">
-       <circle cx="60" cy="60" r="50" fill="none" stroke="#00ff88" stroke-width="2" opacity="0.3" /> <circle cx="60" cy="60" r="35" fill="none" stroke="#00ccff" stroke-width="1" opacity="0.2" /> <!-- Central server --> <rect x="48" y="48" width="24" height="24" rx="4" fill="#0a0e27" stroke="#00ff88" stroke-width="2" /> <line x1="52" y1="55" x2="68" y2="55" stroke="#00ff88" stroke-width="1.5" /> <line x1="52" y1="60" x2="68" y2="60" stroke="#00ccff" stroke-width="1.5" /> <line x1="52" y1="65" x2="62" y2="65" stroke="#00ff88" stroke-width="1.5" /> <!-- Nodes --> <circle cx="60" cy="20" r="6" fill="#0a0e27" stroke="#00ccff" stroke-width="2" /> <circle cx="95" cy="60" r="6" fill="#0a0e27" stroke="#00ff88" stroke-width="2" /> <circle cx="60" cy="100" r="6" fill="#0a0e27" stroke="#00ccff" stroke-width="2" /> <circle cx="25" cy="60" r="6" fill="#0a0e27" stroke="#00ff88" stroke-width="2" /> <!-- Connections --> <line x1="60" y1="26" x2="60" y2="48" stroke="#00ccff" stroke-width="1.5" stroke-dasharray="3,2" /> <line x1="89" y1="60" x2="72" y2="60" stroke="#00ff88" stroke-width="1.5" stroke-dasharray="3,2" /> <line x1="60" y1="72" x2="60" y2="94" stroke="#00ccff" stroke-width="1.5" stroke-dasharray="3,2" /> <line x1="31" y1="60" x2="48" y2="60" stroke="#00ff88" stroke-width="1.5" stroke-dasharray="3,2" />
+      <svg width="120" height="120" viewbox="0 0 120 120"><circle cx="60" cy="60" r="50" fill="none" stroke="#00ff88" stroke-width="2" opacity="0.3" /> <circle cx="60" cy="60" r="35" fill="none" stroke="#00ccff" stroke-width="1" opacity="0.2" /> <!-- Central server --> <rect x="48" y="48" width="24" height="24" rx="4" fill="#0a0e27" stroke="#00ff88" stroke-width="2" /> <line x1="52" y1="55" x2="68" y2="55" stroke="#00ff88" stroke-width="1.5" /> <line x1="52" y1="60" x2="68" y2="60" stroke="#00ccff" stroke-width="1.5" /> <line x1="52" y1="65" x2="62" y2="65" stroke="#00ff88" stroke-width="1.5" /> <!-- Nodes --> <circle cx="60" cy="20" r="6" fill="#0a0e27" stroke="#00ccff" stroke-width="2" /> <circle cx="95" cy="60" r="6" fill="#0a0e27" stroke="#00ff88" stroke-width="2" /> <circle cx="60" cy="100" r="6" fill="#0a0e27" stroke="#00ccff" stroke-width="2" /> <circle cx="25" cy="60" r="6" fill="#0a0e27" stroke="#00ff88" stroke-width="2" /> <!-- Connections --> <line x1="60" y1="26" x2="60" y2="48" stroke="#00ccff" stroke-width="1.5" stroke-dasharray="3,2" /> <line x1="89" y1="60" x2="72" y2="60" stroke="#00ff88" stroke-width="1.5" stroke-dasharray="3,2" /> <line x1="60" y1="72" x2="60" y2="94" stroke="#00ccff" stroke-width="1.5" stroke-dasharray="3,2" /> <line x1="31" y1="60" x2="48" y2="60" stroke="#00ff88" stroke-width="1.5" stroke-dasharray="3,2" />
       </svg>
      </div>
      <h1 id="title-text" class="font-orbitron text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-cyan-400 mb-3">Network Quest</h1>
      <p id="welcome-text" class="text-lg md:text-xl text-gray-300 mb-8 max-w-md mx-auto">Uji pengetahuanmu tentang Jaringan Komputer!</p>
      <p class="text-sm text-gray-500 mb-6">Materi Informatika Kelas XII</p>
-     <div class="flex flex-col sm:flex-row gap-4 justify-center">
-      <button onclick="startGame('quiz')" class="btn-cyber px-8 py-3 rounded-xl font-orbitron text-sm pulse-glow"> 🎯 Quiz Mode </button> <button onclick="startGame('match')" class="btn-cyber px-8 py-3 rounded-xl font-orbitron text-sm" style="background:linear-gradient(135deg,#00ccff,#0088cc)"> 🔗 Cocokkan Topologi </button> <button onclick="showLearn()" class="px-8 py-3 rounded-xl font-orbitron text-sm border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400/10 transition"> 📖 Materi </button>
+     <div class="flex flex-col sm:flex-row gap-3 justify-center flex-wrap"><button onclick="startGame('quiz')" class="btn-cyber px-6 py-3 rounded-xl font-orbitron text-xs md:text-sm pulse-glow"> 🎯 Quiz </button> <button onclick="startGame('match')" class="btn-cyber px-6 py-3 rounded-xl font-orbitron text-xs md:text-sm" style="background:linear-gradient(135deg,#00ccff,#0088cc)"> 🔗 Matching </button> <button onclick="startGame('speedrun')" class="btn-cyber px-6 py-3 rounded-xl font-orbitron text-xs md:text-sm" style="background:linear-gradient(135deg,#ff6b6b,#ee5a6f)"> ⚡ Speed Run </button> <button onclick="startGame('truefal')" class="btn-cyber px-6 py-3 rounded-xl font-orbitron text-xs md:text-sm" style="background:linear-gradient(135deg,#ffd93d,#f4a460)"> ✓/✗ T/F </button> <button onclick="showLearn()" class="px-6 py-3 rounded-xl font-orbitron text-xs md:text-sm border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400/10 transition"> 📖 Materi </button>
      </div>
     </div>
    </div><!-- SCREEN: Learn -->
    <div id="screen-learn" class="relative z-10 hidden min-h-full p-4 md:p-8">
-    <div class="max-w-4xl mx-auto">
-     <button onclick="goHome()" class="mb-6 text-cyan-400 hover:text-white transition flex items-center gap-2"> <i data-lucide="arrow-left" style="width:20px;height:20px"></i> Kembali </button>
+    <div class="max-w-4xl mx-auto"><button onclick="goHome()" class="mb-6 text-cyan-400 hover:text-white transition flex items-center gap-2"> <i data-lucide="arrow-left" style="width:20px;height:20px"></i> Kembali </button>
      <h2 class="font-orbitron text-2xl md:text-3xl text-green-400 mb-6">📖 Rangkuman Materi Jaringan</h2>
-     <div class="space-y-6" id="learn-content">
-      <!-- Card 1 -->
+     <div class="space-y-6" id="learn-content"><!-- Card 1 -->
       <div class="card-glass rounded-2xl p-6 slide-in" style="animation-delay:0.1s">
        <div class="flex items-start gap-4">
         <div class="flex-shrink-0">
-         <svg width="60" height="60" viewbox="0 0 60 60">
-          <rect x="5" y="15" width="50" height="30" rx="5" fill="#0a0e27" stroke="#00ff88" stroke-width="2" /> <line x1="12" y1="24" x2="48" y2="24" stroke="#00ff88" stroke-width="1.5" /> <line x1="12" y1="30" x2="48" y2="30" stroke="#00ccff" stroke-width="1.5" /> <line x1="12" y1="36" x2="35" y2="36" stroke="#00ff88" stroke-width="1.5" /> <circle cx="44" cy="36" r="3" fill="#00ff88" />
+         <svg width="60" height="60" viewbox="0 0 60 60"><rect x="5" y="15" width="50" height="30" rx="5" fill="#0a0e27" stroke="#00ff88" stroke-width="2" /> <line x1="12" y1="24" x2="48" y2="24" stroke="#00ff88" stroke-width="1.5" /> <line x1="12" y1="30" x2="48" y2="30" stroke="#00ccff" stroke-width="1.5" /> <line x1="12" y1="36" x2="35" y2="36" stroke="#00ff88" stroke-width="1.5" /> <circle cx="44" cy="36" r="3" fill="#00ff88" />
          </svg>
         </div>
         <div>
@@ -123,8 +115,7 @@
       <div class="card-glass rounded-2xl p-6 slide-in" style="animation-delay:0.2s">
        <div class="flex items-start gap-4">
         <div class="flex-shrink-0">
-         <svg width="60" height="60" viewbox="0 0 60 60">
-          <rect x="5" y="5" width="50" height="50" rx="8" fill="#0a0e27" stroke="#00ccff" stroke-width="2" /> <text x="30" y="20" font-size="8" fill="#00ff88" text-anchor="middle" font-family="monospace">
+         <svg width="60" height="60" viewbox="0 0 60 60"><rect x="5" y="5" width="50" height="50" rx="8" fill="#0a0e27" stroke="#00ccff" stroke-width="2" /> <text x="30" y="20" font-size="8" fill="#00ff88" text-anchor="middle" font-family="monospace">
            7-APP
           </text> <text x="30" y="30" font-size="8" fill="#00ccff" text-anchor="middle" font-family="monospace">
            4-TCP
@@ -154,8 +145,7 @@
       <div class="card-glass rounded-2xl p-6 slide-in" style="animation-delay:0.3s">
        <div class="flex items-start gap-4">
         <div class="flex-shrink-0">
-         <svg width="60" height="60" viewbox="0 0 60 60">
-          <text x="30" y="20" font-size="9" fill="#00ff88" text-anchor="middle" font-family="monospace">
+         <svg width="60" height="60" viewbox="0 0 60 60"><text x="30" y="20" font-size="9" fill="#00ff88" text-anchor="middle" font-family="monospace">
            192.168
           </text> <text x="30" y="35" font-size="9" fill="#00ccff" text-anchor="middle" font-family="monospace">
            .1.1/24
@@ -183,8 +173,7 @@
       <div class="card-glass rounded-2xl p-6 slide-in" style="animation-delay:0.4s">
        <div class="flex items-start gap-4">
         <div class="flex-shrink-0">
-         <svg width="60" height="60" viewbox="0 0 60 60">
-          <rect x="20" y="5" width="20" height="15" rx="3" fill="#0a0e27" stroke="#ff4466" stroke-width="2" /> <rect x="5" y="40" width="20" height="15" rx="3" fill="#0a0e27" stroke="#00ff88" stroke-width="2" /> <rect x="35" y="40" width="20" height="15" rx="3" fill="#0a0e27" stroke="#00ff88" stroke-width="2" /> <line x1="30" y1="20" x2="15" y2="40" stroke="#00ccff" stroke-width="1.5" /> <line x1="30" y1="20" x2="45" y2="40" stroke="#00ccff" stroke-width="1.5" /> <text x="30" y="14" font-size="6" fill="#ff4466" text-anchor="middle">
+         <svg width="60" height="60" viewbox="0 0 60 60"><rect x="20" y="5" width="20" height="15" rx="3" fill="#0a0e27" stroke="#ff4466" stroke-width="2" /> <rect x="5" y="40" width="20" height="15" rx="3" fill="#0a0e27" stroke="#00ff88" stroke-width="2" /> <rect x="35" y="40" width="20" height="15" rx="3" fill="#0a0e27" stroke="#00ff88" stroke-width="2" /> <line x1="30" y1="20" x2="15" y2="40" stroke="#00ccff" stroke-width="1.5" /> <line x1="30" y1="20" x2="45" y2="40" stroke="#00ccff" stroke-width="1.5" /> <text x="30" y="14" font-size="6" fill="#ff4466" text-anchor="middle">
            🔥
           </text>
          </svg>
@@ -208,8 +197,7 @@
       <div class="card-glass rounded-2xl p-6 slide-in" style="animation-delay:0.5s">
        <div class="flex items-start gap-4">
         <div class="flex-shrink-0">
-         <svg width="60" height="60" viewbox="0 0 60 60">
-          <circle cx="30" cy="30" r="22" fill="none" stroke="#00ccff" stroke-width="2" /> <circle cx="30" cy="30" r="12" fill="none" stroke="#00ff88" stroke-width="1.5" /> <path d="M8 30 Q30 15 52 30" fill="none" stroke="#00ff88" stroke-width="1" opacity="0.7" /> <path d="M8 30 Q30 45 52 30" fill="none" stroke="#00ccff" stroke-width="1" opacity="0.7" /> <line x1="30" y1="8" x2="30" y2="52" stroke="#00ff88" stroke-width="1" opacity="0.5" />
+         <svg width="60" height="60" viewbox="0 0 60 60"><circle cx="30" cy="30" r="22" fill="none" stroke="#00ccff" stroke-width="2" /> <circle cx="30" cy="30" r="12" fill="none" stroke="#00ff88" stroke-width="1.5" /> <path d="M8 30 Q30 15 52 30" fill="none" stroke="#00ff88" stroke-width="1" opacity="0.7" /> <path d="M8 30 Q30 45 52 30" fill="none" stroke="#00ccff" stroke-width="1" opacity="0.7" /> <line x1="30" y1="8" x2="30" y2="52" stroke="#00ff88" stroke-width="1" opacity="0.5" />
          </svg>
         </div>
         <div>
@@ -231,8 +219,7 @@
       <div class="card-glass rounded-2xl p-6 slide-in" style="animation-delay:0.6s">
        <div class="flex items-start gap-4">
         <div class="flex-shrink-0">
-         <svg width="60" height="60" viewbox="0 0 60 60">
-          <rect x="8" y="8" width="44" height="44" rx="6" fill="#0a0e27" stroke="#00ff88" stroke-width="2" /> <line x1="15" y1="20" x2="45" y2="20" stroke="#00ccff" stroke-width="1.5" /> <line x1="15" y1="28" x2="45" y2="28" stroke="#00ff88" stroke-width="1.5" /> <line x1="15" y1="36" x2="45" y2="36" stroke="#00ccff" stroke-width="1.5" /> <line x1="15" y1="44" x2="30" y2="44" stroke="#00ff88" stroke-width="1.5" />
+         <svg width="60" height="60" viewbox="0 0 60 60"><rect x="8" y="8" width="44" height="44" rx="6" fill="#0a0e27" stroke="#00ff88" stroke-width="2" /> <line x1="15" y1="20" x2="45" y2="20" stroke="#00ccff" stroke-width="1.5" /> <line x1="15" y1="28" x2="45" y2="28" stroke="#00ff88" stroke-width="1.5" /> <line x1="15" y1="36" x2="45" y2="36" stroke="#00ccff" stroke-width="1.5" /> <line x1="15" y1="44" x2="30" y2="44" stroke="#00ff88" stroke-width="1.5" />
          </svg>
         </div>
         <div>
@@ -258,8 +245,7 @@
       <div class="card-glass rounded-2xl p-6 slide-in" style="animation-delay:0.7s">
        <div class="flex items-start gap-4">
         <div class="flex-shrink-0">
-         <svg width="60" height="60" viewbox="0 0 60 60">
-          <path d="M10 45 Q15 35 25 25 Q35 15 45 10" fill="none" stroke="#00ff88" stroke-width="2.5" stroke-linecap="round" /> <circle cx="10" cy="45" r="3" fill="#00ccff" /> <circle cx="45" cy="10" r="3" fill="#00ff88" /> <line x1="10" y1="50" x2="50" y2="50" stroke="#00ccff" stroke-width="1" opacity="0.5" /> <line x1="5" y1="30" x2="55" y2="30" stroke="#00ff88" stroke-width="0.5" opacity="0.3" stroke-dasharray="2,2" />
+         <svg width="60" height="60" viewbox="0 0 60 60"><path d="M10 45 Q15 35 25 25 Q35 15 45 10" fill="none" stroke="#00ff88" stroke-width="2.5" stroke-linecap="round" /> <circle cx="10" cy="45" r="3" fill="#00ccff" /> <circle cx="45" cy="10" r="3" fill="#00ff88" /> <line x1="10" y1="50" x2="50" y2="50" stroke="#00ccff" stroke-width="1" opacity="0.5" /> <line x1="5" y1="30" x2="55" y2="30" stroke="#00ff88" stroke-width="0.5" opacity="0.3" stroke-dasharray="2,2" />
          </svg>
         </div>
         <div>
@@ -280,8 +266,7 @@
       <div class="card-glass rounded-2xl p-6 slide-in" style="animation-delay:0.8s">
        <div class="flex items-start gap-4">
         <div class="flex-shrink-0">
-         <svg width="60" height="60" viewbox="0 0 60 60">
-          <line x1="10" y1="15" x2="50" y2="15" stroke="#00ff88" stroke-width="3" stroke-linecap="round" /> <line x1="10" y1="30" x2="50" y2="30" stroke="#00ccff" stroke-width="3" stroke-linecap="round" /> <line x1="10" y1="45" x2="50" y2="45" stroke="#00ff88" stroke-width="3" stroke-linecap="round" /> <circle cx="8" cy="15" r="2.5" fill="#ffaa00" /> <circle cx="8" cy="30" r="2.5" fill="#ffaa00" /> <circle cx="8" cy="45" r="2.5" fill="#ffaa00" />
+         <svg width="60" height="60" viewbox="0 0 60 60"><line x1="10" y1="15" x2="50" y2="15" stroke="#00ff88" stroke-width="3" stroke-linecap="round" /> <line x1="10" y1="30" x2="50" y2="30" stroke="#00ccff" stroke-width="3" stroke-linecap="round" /> <line x1="10" y1="45" x2="50" y2="45" stroke="#00ff88" stroke-width="3" stroke-linecap="round" /> <circle cx="8" cy="15" r="2.5" fill="#ffaa00" /> <circle cx="8" cy="30" r="2.5" fill="#ffaa00" /> <circle cx="8" cy="45" r="2.5" fill="#ffaa00" />
          </svg>
         </div>
         <div>
@@ -303,12 +288,9 @@
     </div>
    </div><!-- SCREEN: Quiz -->
    <div id="screen-quiz" class="relative z-10 hidden min-h-full p-4 md:p-8">
-    <div class="max-w-2xl mx-auto">
-     <!-- Quiz Header -->
-     <div class="flex items-center justify-between mb-6">
-      <button onclick="goHome()" class="text-cyan-400 hover:text-white transition"> <i data-lucide="arrow-left" style="width:24px;height:24px"></i> </button>
-      <div class="flex items-center gap-4">
-       <span id="quiz-score" class="font-orbitron text-green-400 text-lg">Score: 0</span> <span id="quiz-progress" class="text-gray-400 text-sm">1/15</span>
+    <div class="max-w-2xl mx-auto"><!-- Quiz Header -->
+     <div class="flex items-center justify-between mb-6"><button onclick="goHome()" class="text-cyan-400 hover:text-white transition"> <i data-lucide="arrow-left" style="width:24px;height:24px"></i> </button>
+      <div class="flex items-center gap-4"><span id="quiz-score" class="font-orbitron text-green-400 text-lg">Score: 0</span> <span id="quiz-progress" class="text-gray-400 text-sm">1/15</span>
       </div>
      </div><!-- Progress Bar -->
      <div class="w-full h-2 bg-gray-800 rounded-full mb-8 overflow-hidden">
@@ -319,15 +301,13 @@
       <p id="quiz-question" class="font-orbitron text-lg md:text-xl text-white text-center"></p>
      </div><!-- Options -->
      <div id="quiz-options" class="space-y-3"></div><!-- Next Button -->
-     <div id="quiz-next" class="hidden text-center mt-6">
-      <button onclick="nextQuestion()" class="btn-cyber px-8 py-3 rounded-xl font-orbitron text-sm">Selanjutnya →</button>
+     <div id="quiz-next" class="hidden text-center mt-6"><button onclick="nextQuestion()" class="btn-cyber px-8 py-3 rounded-xl font-orbitron text-sm">Selanjutnya →</button>
      </div>
     </div>
    </div><!-- SCREEN: Match Game -->
    <div id="screen-match" class="relative z-10 hidden min-h-full p-4 md:p-8">
     <div class="max-w-3xl mx-auto">
-     <div class="flex items-center justify-between mb-6">
-      <button onclick="goHome()" class="text-cyan-400 hover:text-white transition"> <i data-lucide="arrow-left" style="width:24px;height:24px"></i> </button> <span id="match-score" class="font-orbitron text-green-400 text-lg">Cocokkan: 0/5</span>
+     <div class="flex items-center justify-between mb-6"><button onclick="goHome()" class="text-cyan-400 hover:text-white transition"> <i data-lucide="arrow-left" style="width:24px;height:24px"></i> </button> <span id="match-score" class="font-orbitron text-green-400 text-lg">Cocokkan: 0/5</span>
      </div>
      <h2 class="font-orbitron text-xl text-center text-cyan-400 mb-2">🔗 Cocokkan Topologi</h2>
      <p class="text-center text-gray-400 text-sm mb-6">Pilih topologi lalu pilih deskripsinya</p>
@@ -341,9 +321,39 @@
      <h2 id="result-title" class="font-orbitron text-2xl md:text-3xl text-green-400 mb-3"></h2>
      <p id="result-desc" class="text-gray-300 mb-2"></p>
      <p id="result-score" class="font-orbitron text-4xl text-white mb-6"></p>
-     <div class="flex flex-col sm:flex-row gap-3 justify-center">
-      <button onclick="goHome()" class="btn-cyber px-6 py-3 rounded-xl font-orbitron text-sm">🏠 Menu Utama</button> <button onclick="startGame(lastMode)" class="px-6 py-3 rounded-xl font-orbitron text-sm border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400/10 transition">🔄 Main Lagi</button>
+     <div class="flex flex-col sm:flex-row gap-3 justify-center"><button onclick="goHome()" class="btn-cyber px-6 py-3 rounded-xl font-orbitron text-sm">🏠 Menu</button> <button onclick="startGame(lastMode)" class="px-6 py-3 rounded-xl font-orbitron text-sm border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400/10 transition">🔄 Ulang</button>
      </div>
+    </div>
+   </div><!-- SCREEN: Speed Run -->
+   <div id="screen-speedrun" class="relative z-10 hidden min-h-full p-4 md:p-8">
+    <div class="max-w-2xl mx-auto">
+     <div class="flex items-center justify-between mb-6"><button onclick="goHome()" class="text-cyan-400 hover:text-white transition"> <i data-lucide="arrow-left" style="width:24px;height:24px"></i> </button>
+      <div class="flex items-center gap-4"><span id="speedrun-timer" class="font-orbitron text-2xl text-red-400 pulse-glow">60s</span> <span id="speedrun-score" class="font-orbitron text-green-400 text-lg">Score: 0</span>
+      </div>
+     </div>
+     <h2 class="font-orbitron text-center text-cyan-400 mb-2 text-xl">⚡ Speed Run Mode</h2>
+     <p class="text-center text-gray-400 text-sm mb-6">Jawab benar sebanyak mungkin dalam 60 detik!</p>
+     <div id="speedrun-question-area" class="card-glass rounded-2xl p-6 md:p-8 mb-6">
+      <p id="speedrun-question" class="font-orbitron text-lg md:text-xl text-white text-center mb-4"></p>
+      <div id="speedrun-options" class="space-y-3"></div>
+     </div>
+    </div>
+   </div><!-- SCREEN: True/False -->
+   <div id="screen-truefal" class="relative z-10 hidden min-h-full p-4 md:p-8">
+    <div class="max-w-2xl mx-auto">
+     <div class="flex items-center justify-between mb-6"><button onclick="goHome()" class="text-cyan-400 hover:text-white transition"> <i data-lucide="arrow-left" style="width:24px;height:24px"></i> </button>
+      <div class="flex items-center gap-4"><span id="truefal-score" class="font-orbitron text-green-400 text-lg">Benar: 0</span> <span id="truefal-progress" class="text-gray-400 text-sm">1/10</span>
+      </div>
+     </div>
+     <div class="w-full h-2 bg-gray-800 rounded-full mb-8 overflow-hidden">
+      <div id="truefal-bar" class="progress-bar h-full rounded-full transition-all duration-500" style="width:0%"></div>
+     </div>
+     <div id="truefal-question-area" class="card-glass rounded-2xl p-6 md:p-8 mb-8">
+      <p id="truefal-question" class="font-orbitron text-xl md:text-2xl text-white text-center"></p>
+     </div>
+     <div class="flex gap-4 justify-center"><button id="truefal-true-btn" onclick="answerTrueFal(true)" class="btn-cyber px-12 py-4 rounded-xl font-orbitron text-lg" style="background:linear-gradient(135deg,#00ff88,#00cc6a)">✓ BENAR</button> <button id="truefal-false-btn" onclick="answerTrueFal(false)" class="btn-cyber px-12 py-4 rounded-xl font-orbitron text-lg" style="background:linear-gradient(135deg,#ff4466,#ff2a52)">✗ SALAH</button>
+     </div>
+     <div id="truefal-feedback" class="text-center mt-6 text-lg font-rajdhani"></div>
     </div>
    </div>
   </div>
@@ -389,6 +399,39 @@ const matchPairs = [
   { topology: "Tree", desc: "Hierarki gabungan beberapa topologi star" }
 ];
 
+// True/False questions
+const trueFalseQuestions = [
+  { q: "DNS menggunakan port 53", a: true },
+  { q: "Topologi Bus lebih reliable dibanding Star", a: false },
+  { q: "TCP menjamin pengiriman data sampai tujuan", a: true },
+  { q: "Firewall bekerja pada Layer 1 OSI", a: false },
+  { q: "IP kelas C memiliki host hingga 254", a: true },
+  { q: "Bandwidth dan Throughput memiliki nilai yang sama", a: false },
+  { q: "Wireless menggunakan enkripsi WPA3 lebih aman dari WPA2", a: true },
+  { q: "Switch bekerja pada Layer 3 OSI", a: false },
+  { q: "192.168.0.0/16 adalah IP private", a: true },
+  { q: "Hub adalah perangkat Layer 2", a: false }
+];
+
+// Speed run questions (simple, quick to answer)
+const speedRunQuestions = [
+  { q: "DNS port?", opts: ["21", "53", "80", "443"], a: "53" },
+  { q: "Topologi star pusat adalah?", opts: ["kabel", "hub", "link", "node"], a: "hub" },
+  { q: "TCP artinya?", opts: ["Protocol", "Transfer", "Transmission", "Total"], a: "Transmission" },
+  { q: "Layer 3 OSI?", opts: ["Link", "Network", "Session", "App"], a: "Network" },
+  { q: "HTTPS port?", opts: ["80", "443", "25", "21"], a: "443" },
+  { q: "Private IP range?", opts: ["8.0.0.0", "192.168.x.x", "200.x.x.x", "224.x.x.x"], a: "192.168.x.x" },
+  { q: "Firewall fungsi?", opts: ["Routing", "Filtering", "Encoding", "Caching"], a: "Filtering" },
+  { q: "MAC address Layer?", opts: ["1", "2", "3", "4"], a: "2" },
+  { q: "VPN untuk?", opts: ["Speed", "Security", "Caching", "Routing"], a: "Security" },
+  { q: "Subnet /24?", opts: ["/16", "/8", "/24", "/32"], a: "/24" },
+  { q: "UDP reliable?", opts: ["Yes", "No", "Maybe", "Partial"], a: "No" },
+  { q: "Router Layer?", opts: ["2", "3", "4", "7"], a: "3" },
+  { q: "FTP port?", opts: ["21", "25", "53", "80"], a: "21" },
+  { q: "Latency ideal?", opts: ["100ms", ">50ms", "<50ms", "1s"], a: "<50ms" },
+  { q: "Email kirim?", opts: ["IMAP", "SMTP", "POP3", "DNS"], a: "SMTP" }
+];
+
 function shuffle(arr) {
   const a = [...arr];
   for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i+1)); [a[i],a[j]]=[a[j],a[i]]; }
@@ -409,7 +452,9 @@ function showLearn() { showScreen('learn'); }
 function startGame(mode) {
   lastMode = mode;
   if (mode === 'quiz') startQuiz();
-  else startMatch();
+  else if (mode === 'match') startMatch();
+  else if (mode === 'speedrun') startSpeedRun();
+  else if (mode === 'truefal') startTrueFalse();
 }
 
 // QUIZ
@@ -610,6 +655,159 @@ function selectMatch(btn) {
   }
 }
 
+// SPEED RUN MODE
+let speedRunActive = false;
+let speedRunTimer = 60;
+let speedRunIdx = 0;
+
+function startSpeedRun() {
+  speedRunActive = true;
+  speedRunTimer = 60;
+  speedRunIdx = 0;
+  score = 0;
+  const questions = shuffle(speedRunQuestions).slice(0, 15);
+  window.speedRunQuestions = questions;
+  showScreen('speedrun');
+  renderSpeedRunQuestion();
+  startSpeedRunTimer();
+}
+
+function startSpeedRunTimer() {
+  const interval = setInterval(() => {
+    speedRunTimer--;
+    document.getElementById('speedrun-timer').textContent = `${speedRunTimer}s`;
+    if (speedRunTimer <= 0) {
+      clearInterval(interval);
+      endSpeedRun();
+    }
+  }, 1000);
+}
+
+function renderSpeedRunQuestion() {
+  if (speedRunIdx >= window.speedRunQuestions.length) {
+    endSpeedRun();
+    return;
+  }
+  const q = window.speedRunQuestions[speedRunIdx];
+  document.getElementById('speedrun-question').textContent = q.q;
+  const opts = shuffle(q.opts);
+  const container = document.getElementById('speedrun-options');
+  container.innerHTML = '';
+  opts.forEach((opt, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'option-btn w-full text-left px-4 py-3 rounded-xl text-white font-rajdhani text-base';
+    btn.textContent = opt;
+    btn.onclick = () => {
+      if (opt === q.a) {
+        score += 5;
+        btn.classList.add('correct');
+        document.getElementById('speedrun-score').textContent = `Score: ${score}`;
+      } else {
+        btn.classList.add('wrong');
+        btn.parentElement.classList.add('shake');
+      }
+      btn.onclick = null;
+      opts.forEach(o => {
+        [...container.children].forEach(b => b.onclick = null);
+      });
+      speedRunIdx++;
+      setTimeout(renderSpeedRunQuestion, 600);
+    };
+    container.appendChild(btn);
+  });
+}
+
+function endSpeedRun() {
+  speedRunActive = false;
+  let icon, title, desc;
+  const pct = (score / 75) * 100;
+  if (score >= 50) { icon = '🏃‍♂️'; title = 'Kilat!'; desc = 'Kecepatan tanpa mengorbankan akurasi!'; }
+  else if (score >= 30) { icon = '⚡'; title = 'Cepat!'; desc = 'Agak terburu-buru, tapi bagus!'; }
+  else { icon = '🐢'; title = 'Santai!'; desc = 'Lebih banyak latihan ya!'; }
+  
+  document.getElementById('result-icon').textContent = icon;
+  document.getElementById('result-title').textContent = title;
+  document.getElementById('result-desc').textContent = desc;
+  document.getElementById('result-score').textContent = `${score} Poin`;
+  showScreen('result');
+}
+
+// TRUE/FALSE MODE
+let trueFalIdx = 0;
+let trueFalScore = 0;
+let trueFalStreak = 0;
+
+function startTrueFalse() {
+  trueFalIdx = 0;
+  trueFalScore = 0;
+  trueFalStreak = 0;
+  showScreen('truefal');
+  renderTrueFal();
+}
+
+function renderTrueFal() {
+  if (trueFalIdx >= 10) {
+    endTrueFalse();
+    return;
+  }
+  const q = trueFalseQuestions[trueFalIdx];
+  document.getElementById('truefal-question').textContent = q.q;
+  document.getElementById('truefal-progress').textContent = `${trueFalIdx + 1}/10`;
+  document.getElementById('truefal-bar').style.width = `${((trueFalIdx) / 10) * 100}%`;
+  document.getElementById('truefal-feedback').innerHTML = '';
+  document.getElementById('truefal-score').textContent = `Benar: ${trueFalScore}`;
+  
+  const trueBtn = document.getElementById('truefal-true-btn');
+  const falseBtn = document.getElementById('truefal-false-btn');
+  trueBtn.onclick = () => answerTrueFal(true);
+  falseBtn.onclick = () => answerTrueFal(false);
+  trueBtn.style.opacity = '1';
+  falseBtn.style.opacity = '1';
+  trueBtn.style.pointerEvents = 'auto';
+  falseBtn.style.pointerEvents = 'auto';
+}
+
+function answerTrueFal(userAnswer) {
+  const q = trueFalseQuestions[trueFalIdx];
+  const correct = userAnswer === q.a;
+  
+  const trueBtn = document.getElementById('truefal-true-btn');
+  const falseBtn = document.getElementById('truefal-false-btn');
+  trueBtn.style.pointerEvents = 'none';
+  falseBtn.style.pointerEvents = 'none';
+  
+  const feedback = document.getElementById('truefal-feedback');
+  if (correct) {
+    trueFalScore++;
+    trueFalStreak++;
+    feedback.innerHTML = `<span class="text-green-400 text-2xl">✓ BENAR!</span><br><span class="text-gray-400 text-sm">Streak: ${trueFalStreak}</span>`;
+    trueBtn.style.opacity = userAnswer ? '1' : '0.5';
+    falseBtn.style.opacity = userAnswer ? '0.5' : '1';
+  } else {
+    feedback.innerHTML = `<span class="text-red-400 text-2xl">✗ SALAH</span><br><span class="text-gray-400 text-sm">Jawaban: ${q.a ? 'BENAR' : 'SALAH'}</span>`;
+    trueFalStreak = 0;
+    trueBtn.style.opacity = userAnswer ? '0.5' : '1';
+    falseBtn.style.opacity = userAnswer ? '1' : '0.5';
+  }
+  
+  trueFalIdx++;
+  setTimeout(renderTrueFal, 1500);
+}
+
+function endTrueFalse() {
+  let icon, title, desc;
+  if (trueFalScore >= 8) { icon = '🎓'; title = 'Master!'; desc = 'Penguasaan materi sangat bagus!'; }
+  else if (trueFalScore >= 6) { icon = '😊'; title = 'Baik!'; desc = 'Sudah paham sebagian besar!'; }
+  else if (trueFalScore >= 4) { icon = '📚'; title = 'Lumayan!'; desc = 'Terus belajar ya!'; }
+  else { icon = '💪'; title = 'Semangat!'; desc = 'Jangan menyerah, ulangi lagi!'; }
+  
+  document.getElementById('result-icon').textContent = icon;
+  document.getElementById('result-title').textContent = title;
+  document.getElementById('result-desc').textContent = desc;
+  document.getElementById('result-score').textContent = `${trueFalScore}/10`;
+  showScreen('result');
+}
+
 // Element SDK
 const defaultConfig = {
   game_title: 'Network Quest',
@@ -662,5 +860,5 @@ window.elementSdk.init({
 
 lucide.createIcons();
 </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9efa894ff7a70ad8',t:'MTc3Njc1NTA4NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9efa9824b1cff853',t:'MTc3Njc1NTY5Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
