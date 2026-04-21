@@ -66,9 +66,11 @@
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
  </head>
  <body class="h-full">
-  <div id="app" class="h-full w-full network-bg overflow-auto font-rajdhani text-white relative"><!-- Decorative Network Nodes -->
+  <div id="app" class="h-full w-full network-bg overflow-auto font-rajdhani text-white relative">
+   <!-- Decorative Network Nodes -->
    <div class="absolute inset-0 overflow-hidden pointer-events-none">
-    <svg class="absolute inset-0 w-full h-full opacity-20"><defs>
+    <svg class="absolute inset-0 w-full h-full opacity-20">
+     <defs>
       <lineargradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="100%">
        <stop offset="0%" style="stop-color:#00ff88;stop-opacity:0.5" />
        <stop offset="100%" style="stop-color:#00ccff;stop-opacity:0.1" />
@@ -77,38 +79,52 @@
     </svg>
    </div><!-- SCREEN: Start -->
    <div id="screen-start" class="relative z-10 flex flex-col items-center justify-center min-h-full p-6">
-    <div class="text-center fade-up"><!-- Network Icon SVG -->
+    <div class="text-center fade-up">
+     <!-- Network Icon SVG -->
      <div class="float-anim mb-6 inline-block">
-      <svg width="120" height="120" viewbox="0 0 120 120"><circle cx="60" cy="60" r="50" fill="none" stroke="#00ff88" stroke-width="2" opacity="0.3" /> <circle cx="60" cy="60" r="35" fill="none" stroke="#00ccff" stroke-width="1" opacity="0.2" /> <!-- Central server --> <rect x="48" y="48" width="24" height="24" rx="4" fill="#0a0e27" stroke="#00ff88" stroke-width="2" /> <line x1="52" y1="55" x2="68" y2="55" stroke="#00ff88" stroke-width="1.5" /> <line x1="52" y1="60" x2="68" y2="60" stroke="#00ccff" stroke-width="1.5" /> <line x1="52" y1="65" x2="62" y2="65" stroke="#00ff88" stroke-width="1.5" /> <!-- Nodes --> <circle cx="60" cy="20" r="6" fill="#0a0e27" stroke="#00ccff" stroke-width="2" /> <circle cx="95" cy="60" r="6" fill="#0a0e27" stroke="#00ff88" stroke-width="2" /> <circle cx="60" cy="100" r="6" fill="#0a0e27" stroke="#00ccff" stroke-width="2" /> <circle cx="25" cy="60" r="6" fill="#0a0e27" stroke="#00ff88" stroke-width="2" /> <!-- Connections --> <line x1="60" y1="26" x2="60" y2="48" stroke="#00ccff" stroke-width="1.5" stroke-dasharray="3,2" /> <line x1="89" y1="60" x2="72" y2="60" stroke="#00ff88" stroke-width="1.5" stroke-dasharray="3,2" /> <line x1="60" y1="72" x2="60" y2="94" stroke="#00ccff" stroke-width="1.5" stroke-dasharray="3,2" /> <line x1="31" y1="60" x2="48" y2="60" stroke="#00ff88" stroke-width="1.5" stroke-dasharray="3,2" />
+      <svg width="120" height="120" viewbox="0 0 120 120">
+       <circle cx="60" cy="60" r="50" fill="none" stroke="#00ff88" stroke-width="2" opacity="0.3" /> <circle cx="60" cy="60" r="35" fill="none" stroke="#00ccff" stroke-width="1" opacity="0.2" /> <!-- Central server --> <rect x="48" y="48" width="24" height="24" rx="4" fill="#0a0e27" stroke="#00ff88" stroke-width="2" /> <line x1="52" y1="55" x2="68" y2="55" stroke="#00ff88" stroke-width="1.5" /> <line x1="52" y1="60" x2="68" y2="60" stroke="#00ccff" stroke-width="1.5" /> <line x1="52" y1="65" x2="62" y2="65" stroke="#00ff88" stroke-width="1.5" /> <!-- Nodes --> <circle cx="60" cy="20" r="6" fill="#0a0e27" stroke="#00ccff" stroke-width="2" /> <circle cx="95" cy="60" r="6" fill="#0a0e27" stroke="#00ff88" stroke-width="2" /> <circle cx="60" cy="100" r="6" fill="#0a0e27" stroke="#00ccff" stroke-width="2" /> <circle cx="25" cy="60" r="6" fill="#0a0e27" stroke="#00ff88" stroke-width="2" /> <!-- Connections --> <line x1="60" y1="26" x2="60" y2="48" stroke="#00ccff" stroke-width="1.5" stroke-dasharray="3,2" /> <line x1="89" y1="60" x2="72" y2="60" stroke="#00ff88" stroke-width="1.5" stroke-dasharray="3,2" /> <line x1="60" y1="72" x2="60" y2="94" stroke="#00ccff" stroke-width="1.5" stroke-dasharray="3,2" /> <line x1="31" y1="60" x2="48" y2="60" stroke="#00ff88" stroke-width="1.5" stroke-dasharray="3,2" />
       </svg>
      </div>
      <h1 id="title-text" class="font-orbitron text-4xl md:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-cyan-400 mb-3">Network Quest</h1>
      <p id="welcome-text" class="text-lg md:text-xl text-gray-300 mb-8 max-w-md mx-auto">Uji pengetahuanmu tentang Jaringan Komputer!</p>
      <p class="text-sm text-gray-500 mb-6">Materi Informatika Kelas XII</p>
-     <div class="flex flex-col sm:flex-row gap-4 justify-center"><button onclick="startGame('quiz')" class="btn-cyber px-8 py-3 rounded-xl font-orbitron text-sm pulse-glow"> 🎯 Quiz Mode </button> <button onclick="startGame('match')" class="btn-cyber px-8 py-3 rounded-xl font-orbitron text-sm" style="background:linear-gradient(135deg,#00ccff,#0088cc)"> 🔗 Cocokkan Topologi </button> <button onclick="showLearn()" class="px-8 py-3 rounded-xl font-orbitron text-sm border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400/10 transition"> 📖 Materi </button>
+     <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <button onclick="startGame('quiz')" class="btn-cyber px-8 py-3 rounded-xl font-orbitron text-sm pulse-glow"> 🎯 Quiz Mode </button> <button onclick="startGame('match')" class="btn-cyber px-8 py-3 rounded-xl font-orbitron text-sm" style="background:linear-gradient(135deg,#00ccff,#0088cc)"> 🔗 Cocokkan Topologi </button> <button onclick="showLearn()" class="px-8 py-3 rounded-xl font-orbitron text-sm border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400/10 transition"> 📖 Materi </button>
      </div>
     </div>
    </div><!-- SCREEN: Learn -->
    <div id="screen-learn" class="relative z-10 hidden min-h-full p-4 md:p-8">
-    <div class="max-w-4xl mx-auto"><button onclick="goHome()" class="mb-6 text-cyan-400 hover:text-white transition flex items-center gap-2"> <i data-lucide="arrow-left" style="width:20px;height:20px"></i> Kembali </button>
+    <div class="max-w-4xl mx-auto">
+     <button onclick="goHome()" class="mb-6 text-cyan-400 hover:text-white transition flex items-center gap-2"> <i data-lucide="arrow-left" style="width:20px;height:20px"></i> Kembali </button>
      <h2 class="font-orbitron text-2xl md:text-3xl text-green-400 mb-6">📖 Rangkuman Materi Jaringan</h2>
-     <div class="space-y-6" id="learn-content"><!-- Card 1 -->
+     <div class="space-y-6" id="learn-content">
+      <!-- Card 1 -->
       <div class="card-glass rounded-2xl p-6 slide-in" style="animation-delay:0.1s">
        <div class="flex items-start gap-4">
         <div class="flex-shrink-0">
-         <svg width="60" height="60" viewbox="0 0 60 60"><rect x="5" y="15" width="50" height="30" rx="5" fill="#0a0e27" stroke="#00ff88" stroke-width="2" /> <line x1="12" y1="24" x2="48" y2="24" stroke="#00ff88" stroke-width="1.5" /> <line x1="12" y1="30" x2="48" y2="30" stroke="#00ccff" stroke-width="1.5" /> <line x1="12" y1="36" x2="35" y2="36" stroke="#00ff88" stroke-width="1.5" /> <circle cx="44" cy="36" r="3" fill="#00ff88" />
+         <svg width="60" height="60" viewbox="0 0 60 60">
+          <rect x="5" y="15" width="50" height="30" rx="5" fill="#0a0e27" stroke="#00ff88" stroke-width="2" /> <line x1="12" y1="24" x2="48" y2="24" stroke="#00ff88" stroke-width="1.5" /> <line x1="12" y1="30" x2="48" y2="30" stroke="#00ccff" stroke-width="1.5" /> <line x1="12" y1="36" x2="35" y2="36" stroke="#00ff88" stroke-width="1.5" /> <circle cx="44" cy="36" r="3" fill="#00ff88" />
          </svg>
         </div>
         <div>
          <h3 class="font-orbitron text-lg text-green-400 mb-2">Topologi Jaringan</h3>
-         <p class="text-gray-300 text-sm leading-relaxed"><strong class="text-white">Star:</strong> Semua node terhubung ke hub/switch pusat. <strong class="text-white">Bus:</strong> Semua node terhubung ke satu kabel utama. <strong class="text-white">Ring:</strong> Node membentuk lingkaran tertutup. <strong class="text-white">Mesh:</strong> Setiap node terhubung ke semua node lain. <strong class="text-white">Tree:</strong> Gabungan topologi star yang disusun hierarkis.</p>
+         <p class="text-gray-300 text-sm leading-relaxed mb-3">Topologi adalah cara perangkat terhubung dalam jaringan komputer.</p>
+         <div class="space-y-2 text-sm">
+          <p><strong class="text-green-400">⭐ Star:</strong> Semua node terhubung ke hub/switch pusat. <span class="text-gray-400">Contoh: Ruang kantor dengan 1 switch pusat</span></p>
+          <p><strong class="text-green-400">📏 Bus:</strong> Semua node terhubung ke satu kabel utama. <span class="text-gray-400">Contoh: Jaringan lama dengan coaxial cable</span></p>
+          <p><strong class="text-green-400">⭕ Ring:</strong> Node membentuk lingkaran tertutup. <span class="text-gray-400">Contoh: Jaringan Token Ring</span></p>
+          <p><strong class="text-green-400">🕸️ Mesh:</strong> Setiap node terhubung ke semua node lain. <span class="text-gray-400">Contoh: Wireless sensor networks</span></p>
+          <p><strong class="text-green-400">🌳 Tree:</strong> Gabungan topologi star hierarkis. <span class="text-gray-400">Contoh: Jaringan enterprise dengan multiple floors</span></p>
+         </div>
         </div>
        </div>
       </div><!-- Card 2 -->
       <div class="card-glass rounded-2xl p-6 slide-in" style="animation-delay:0.2s">
        <div class="flex items-start gap-4">
         <div class="flex-shrink-0">
-         <svg width="60" height="60" viewbox="0 0 60 60"><rect x="5" y="5" width="50" height="50" rx="8" fill="#0a0e27" stroke="#00ccff" stroke-width="2" /> <text x="30" y="20" font-size="8" fill="#00ff88" text-anchor="middle" font-family="monospace">
+         <svg width="60" height="60" viewbox="0 0 60 60">
+          <rect x="5" y="5" width="50" height="50" rx="8" fill="#0a0e27" stroke="#00ccff" stroke-width="2" /> <text x="30" y="20" font-size="8" fill="#00ff88" text-anchor="middle" font-family="monospace">
            7-APP
           </text> <text x="30" y="30" font-size="8" fill="#00ccff" text-anchor="middle" font-family="monospace">
            4-TCP
@@ -121,14 +137,25 @@
         </div>
         <div>
          <h3 class="font-orbitron text-lg text-cyan-400 mb-2">Model OSI &amp; TCP/IP</h3>
-         <p class="text-gray-300 text-sm leading-relaxed"><strong class="text-white">OSI 7 Layer:</strong> Physical, Data Link, Network, Transport, Session, Presentation, Application. <strong class="text-white">TCP/IP 4 Layer:</strong> Network Access, Internet, Transport, Application. Protokol penting: HTTP, FTP, SMTP, DNS, TCP, UDP, IP, ARP.</p>
+         <p class="text-gray-300 text-sm leading-relaxed mb-3"><strong class="text-white">OSI (Open Systems Interconnection):</strong> Model referensi 7 layer untuk komunikasi jaringan.</p>
+         <div class="space-y-2 text-xs bg-gray-900/40 p-3 rounded-lg mb-3 font-mono">
+          <p><strong class="text-green-400">Layer 7 - Application:</strong> HTTP, FTP, SMTP, DNS, Telnet</p>
+          <p><strong class="text-cyan-400">Layer 6 - Presentation:</strong> Enkripsi, kompresi, enkoding</p>
+          <p><strong class="text-green-400">Layer 5 - Session:</strong> Manajemen sesi, login</p>
+          <p><strong class="text-cyan-400">Layer 4 - Transport:</strong> TCP, UDP, flow control</p>
+          <p><strong class="text-green-400">Layer 3 - Network:</strong> IP, Routing, addressing</p>
+          <p><strong class="text-cyan-400">Layer 2 - Data Link:</strong> MAC address, frame, switch</p>
+          <p><strong class="text-green-400">Layer 1 - Physical:</strong> Cable, sinyal, hub</p>
+         </div>
+         <p class="text-gray-300 text-sm"><strong class="text-cyan-400">TCP/IP 4 Layer:</strong> Versi praktis dari OSI untuk internet modern. Network Access → Internet → Transport → Application</p>
         </div>
        </div>
       </div><!-- Card 3 -->
       <div class="card-glass rounded-2xl p-6 slide-in" style="animation-delay:0.3s">
        <div class="flex items-start gap-4">
         <div class="flex-shrink-0">
-         <svg width="60" height="60" viewbox="0 0 60 60"><text x="30" y="20" font-size="9" fill="#00ff88" text-anchor="middle" font-family="monospace">
+         <svg width="60" height="60" viewbox="0 0 60 60">
+          <text x="30" y="20" font-size="9" fill="#00ff88" text-anchor="middle" font-family="monospace">
            192.168
           </text> <text x="30" y="35" font-size="9" fill="#00ccff" text-anchor="middle" font-family="monospace">
            .1.1/24
@@ -139,33 +166,136 @@
         </div>
         <div>
          <h3 class="font-orbitron text-lg text-green-400 mb-2">IP Address &amp; Subnetting</h3>
-         <p class="text-gray-300 text-sm leading-relaxed"><strong class="text-white">IPv4:</strong> 32-bit, 4 oktet (0-255). <strong class="text-white">Kelas:</strong> A (1-126), B (128-191), C (192-223). <strong class="text-white">Subnet Mask:</strong> Membagi network dan host. <strong class="text-white">CIDR:</strong> Notasi /prefix untuk subnet. <strong class="text-white">Private IP:</strong> 10.x.x.x, 172.16-31.x.x, 192.168.x.x</p>
+         <p class="text-gray-300 text-sm leading-relaxed mb-3"><strong class="text-white">IPv4:</strong> 32-bit address, 4 oktet (0-255), ditulis desimal dengan titik.</p>
+         <div class="space-y-2 text-xs bg-gray-900/40 p-3 rounded-lg mb-3 font-mono">
+          <p><strong class="text-green-400">Kelas A:</strong> 1-126.x.x.x | Host: 16 juta</p>
+          <p><strong class="text-cyan-400">Kelas B:</strong> 128-191.x.x.x | Host: 65 ribu</p>
+          <p><strong class="text-green-400">Kelas C:</strong> 192-223.x.x.x | Host: 254</p>
+          <p><strong class="text-cyan-400">Kelas D:</strong> Multicast (224-239)</p>
+          <p><strong class="text-green-400">Kelas E:</strong> Reserved (240-255)</p>
+         </div>
+         <p class="text-gray-300 text-sm mb-2"><strong class="text-cyan-400">Subnet Mask:</strong> Memisahkan network dan host bits. Default: /8 (A), /16 (B), /24 (C)</p>
+         <p class="text-gray-300 text-sm mb-2"><strong class="text-green-400">Private IP (RFC 1918):</strong> 10.0.0.0/8 | 172.16.0.0/12 | 192.168.0.0/16</p>
+         <p class="text-gray-300 text-sm"><strong class="text-cyan-400">CIDR Notation:</strong> /24 = 255.255.255.0 | /25 = 255.255.255.128 | /32 = single host</p>
         </div>
        </div>
       </div><!-- Card 4 -->
       <div class="card-glass rounded-2xl p-6 slide-in" style="animation-delay:0.4s">
        <div class="flex items-start gap-4">
         <div class="flex-shrink-0">
-         <svg width="60" height="60" viewbox="0 0 60 60"><rect x="20" y="5" width="20" height="15" rx="3" fill="#0a0e27" stroke="#ff4466" stroke-width="2" /> <rect x="5" y="40" width="20" height="15" rx="3" fill="#0a0e27" stroke="#00ff88" stroke-width="2" /> <rect x="35" y="40" width="20" height="15" rx="3" fill="#0a0e27" stroke="#00ff88" stroke-width="2" /> <line x1="30" y1="20" x2="15" y2="40" stroke="#00ccff" stroke-width="1.5" /> <line x1="30" y1="20" x2="45" y2="40" stroke="#00ccff" stroke-width="1.5" /> <text x="30" y="14" font-size="6" fill="#ff4466" text-anchor="middle">
+         <svg width="60" height="60" viewbox="0 0 60 60">
+          <rect x="20" y="5" width="20" height="15" rx="3" fill="#0a0e27" stroke="#ff4466" stroke-width="2" /> <rect x="5" y="40" width="20" height="15" rx="3" fill="#0a0e27" stroke="#00ff88" stroke-width="2" /> <rect x="35" y="40" width="20" height="15" rx="3" fill="#0a0e27" stroke="#00ff88" stroke-width="2" /> <line x1="30" y1="20" x2="15" y2="40" stroke="#00ccff" stroke-width="1.5" /> <line x1="30" y1="20" x2="45" y2="40" stroke="#00ccff" stroke-width="1.5" /> <text x="30" y="14" font-size="6" fill="#ff4466" text-anchor="middle">
            🔥
           </text>
          </svg>
         </div>
         <div>
          <h3 class="font-orbitron text-lg text-red-400 mb-2">Keamanan Jaringan</h3>
-         <p class="text-gray-300 text-sm leading-relaxed"><strong class="text-white">Firewall:</strong> Memfilter lalu lintas jaringan. <strong class="text-white">Enkripsi:</strong> SSL/TLS, WPA2/WPA3. <strong class="text-white">Ancaman:</strong> DDoS, Man-in-the-Middle, Phishing, Malware. <strong class="text-white">VPN:</strong> Koneksi aman melalui jaringan publik.</p>
+         <p class="text-gray-300 text-sm leading-relaxed mb-3">Perlindungan jaringan dari akses tidak sah dan serangan cyber.</p>
+         <div class="space-y-2 text-xs bg-gray-900/40 p-3 rounded-lg mb-3 font-mono">
+          <p><strong class="text-red-400">🔥 Firewall:</strong> Filter lalu lintas, block port/protokol tertentu</p>
+          <p><strong class="text-yellow-400">🔒 Enkripsi:</strong> SSL/TLS (HTTPS), WPA3 (Wireless)</p>
+          <p><strong class="text-red-400">⚠️ DDoS Attack:</strong> Banjiri server dengan request fake dari banyak IP</p>
+          <p><strong class="text-yellow-400">🎣 Phishing:</strong> Email palsu menipu user untuk memberikan password</p>
+          <p><strong class="text-red-400">👁️ Man-in-the-Middle:</strong> Interceptor komunikasi antar host</p>
+          <p><strong class="text-yellow-400">🦠 Malware:</strong> Software berbahaya: virus, worm, trojan</p>
+         </div>
+         <p class="text-gray-300 text-sm mb-2"><strong class="text-cyan-400">VPN (Virtual Private Network):</strong> Tunnel aman untuk komunikasi melalui jaringan publik</p>
+         <p class="text-gray-300 text-sm"><strong class="text-green-400">Authentication:</strong> Username/password, biometric, 2FA untuk verifikasi identitas</p>
         </div>
        </div>
       </div><!-- Card 5 -->
       <div class="card-glass rounded-2xl p-6 slide-in" style="animation-delay:0.5s">
        <div class="flex items-start gap-4">
         <div class="flex-shrink-0">
-         <svg width="60" height="60" viewbox="0 0 60 60"><circle cx="30" cy="30" r="22" fill="none" stroke="#00ccff" stroke-width="2" /> <circle cx="30" cy="30" r="12" fill="none" stroke="#00ff88" stroke-width="1.5" /> <path d="M8 30 Q30 15 52 30" fill="none" stroke="#00ff88" stroke-width="1" opacity="0.7" /> <path d="M8 30 Q30 45 52 30" fill="none" stroke="#00ccff" stroke-width="1" opacity="0.7" /> <line x1="30" y1="8" x2="30" y2="52" stroke="#00ff88" stroke-width="1" opacity="0.5" />
+         <svg width="60" height="60" viewbox="0 0 60 60">
+          <circle cx="30" cy="30" r="22" fill="none" stroke="#00ccff" stroke-width="2" /> <circle cx="30" cy="30" r="12" fill="none" stroke="#00ff88" stroke-width="1.5" /> <path d="M8 30 Q30 15 52 30" fill="none" stroke="#00ff88" stroke-width="1" opacity="0.7" /> <path d="M8 30 Q30 45 52 30" fill="none" stroke="#00ccff" stroke-width="1" opacity="0.7" /> <line x1="30" y1="8" x2="30" y2="52" stroke="#00ff88" stroke-width="1" opacity="0.5" />
          </svg>
         </div>
         <div>
          <h3 class="font-orbitron text-lg text-cyan-400 mb-2">Perangkat Jaringan</h3>
-         <p class="text-gray-300 text-sm leading-relaxed"><strong class="text-white">Router:</strong> Menghubungkan jaringan berbeda, routing paket. <strong class="text-white">Switch:</strong> Menghubungkan perangkat dalam LAN, forwarding frame. <strong class="text-white">Hub:</strong> Broadcast semua port. <strong class="text-white">Access Point:</strong> Koneksi wireless. <strong class="text-white">Modem:</strong> Modulasi-demodulasi sinyal.</p>
+         <p class="text-gray-300 text-sm leading-relaxed mb-3">Hardware yang digunakan untuk membangun dan mengelola jaringan.</p>
+         <div class="space-y-2 text-xs bg-gray-900/40 p-3 rounded-lg mb-3 font-mono">
+          <p><strong class="text-green-400">🔀 Router:</strong> Layer 3, menghubung jaringan berbeda, routing paket IP</p>
+          <p><strong class="text-cyan-400">🔗 Switch:</strong> Layer 2, hub intelligent, forward frame berdasarkan MAC</p>
+          <p><strong class="text-green-400">🌐 Hub:</strong> Layer 1, broadcast ke semua port, half-duplex</p>
+          <p><strong class="text-cyan-400">📡 Access Point (AP):</strong> Wireless, koneksi WiFi, managed by switch</p>
+          <p><strong class="text-green-400">📞 Modem:</strong> Modulasi-demodulasi, converter signal ISP ke digital</p>
+          <p><strong class="text-cyan-400">🔌 Repeater:</strong> Perkuat sinyal untuk jarak jauh</p>
+         </div>
+         <p class="text-gray-300 text-sm mb-2"><strong class="text-green-400">Kecepatan:</strong> 10 Mbps (Ethernet), 100 Mbps (Fast Ethernet), 1000 Mbps (Gigabit), 10 Gbps (10G)</p>
+         <p class="text-gray-300 text-sm"><strong class="text-cyan-400">Kabel:</strong> Twisted Pair (Cat5e/Cat6/Cat7), Fiber Optic, Coaxial</p>
+        </div>
+       </div>
+      </div><!-- Card 6: Protokol Jaringan -->
+      <div class="card-glass rounded-2xl p-6 slide-in" style="animation-delay:0.6s">
+       <div class="flex items-start gap-4">
+        <div class="flex-shrink-0">
+         <svg width="60" height="60" viewbox="0 0 60 60">
+          <rect x="8" y="8" width="44" height="44" rx="6" fill="#0a0e27" stroke="#00ff88" stroke-width="2" /> <line x1="15" y1="20" x2="45" y2="20" stroke="#00ccff" stroke-width="1.5" /> <line x1="15" y1="28" x2="45" y2="28" stroke="#00ff88" stroke-width="1.5" /> <line x1="15" y1="36" x2="45" y2="36" stroke="#00ccff" stroke-width="1.5" /> <line x1="15" y1="44" x2="30" y2="44" stroke="#00ff88" stroke-width="1.5" />
+         </svg>
+        </div>
+        <div>
+         <h3 class="font-orbitron text-lg text-green-400 mb-2">Protokol Jaringan Penting</h3>
+         <p class="text-gray-300 text-sm leading-relaxed mb-3">Aturan komunikasi untuk pertukaran data antar perangkat.</p>
+         <div class="space-y-2 text-xs bg-gray-900/40 p-3 rounded-lg mb-3 font-mono">
+          <p><strong class="text-green-400">HTTP/HTTPS:</strong> Web browsing (port 80/443)</p>
+          <p><strong class="text-cyan-400">FTP:</strong> File transfer (port 21)</p>
+          <p><strong class="text-green-400">SMTP:</strong> Send email (port 25)</p>
+          <p><strong class="text-cyan-400">POP3/IMAP:</strong> Receive email (port 110/143)</p>
+          <p><strong class="text-green-400">DNS:</strong> Domain to IP translation (port 53)</p>
+          <p><strong class="text-cyan-400">SSH:</strong> Secure shell, remote login (port 22)</p>
+          <p><strong class="text-green-400">Telnet:</strong> Remote login tidak terenkripsi (port 23)</p>
+          <p><strong class="text-cyan-400">TCP:</strong> Reliable, connection-oriented, untuk aplikasi penting</p>
+          <p><strong class="text-green-400">UDP:</strong> Fast, connectionless, untuk streaming/gaming</p>
+          <p><strong class="text-cyan-400">IP:</strong> Internet Protocol, addressing &amp; routing</p>
+          <p><strong class="text-green-400">ARP:</strong> Map IP address ke MAC address</p>
+          <p><strong class="text-cyan-400">DHCP:</strong> Automatic IP address assignment</p>
+         </div>
+        </div>
+       </div>
+      </div><!-- Card 7: Bandwidth & Throughput -->
+      <div class="card-glass rounded-2xl p-6 slide-in" style="animation-delay:0.7s">
+       <div class="flex items-start gap-4">
+        <div class="flex-shrink-0">
+         <svg width="60" height="60" viewbox="0 0 60 60">
+          <path d="M10 45 Q15 35 25 25 Q35 15 45 10" fill="none" stroke="#00ff88" stroke-width="2.5" stroke-linecap="round" /> <circle cx="10" cy="45" r="3" fill="#00ccff" /> <circle cx="45" cy="10" r="3" fill="#00ff88" /> <line x1="10" y1="50" x2="50" y2="50" stroke="#00ccff" stroke-width="1" opacity="0.5" /> <line x1="5" y1="30" x2="55" y2="30" stroke="#00ff88" stroke-width="0.5" opacity="0.3" stroke-dasharray="2,2" />
+         </svg>
+        </div>
+        <div>
+         <h3 class="font-orbitron text-lg text-cyan-400 mb-2">Bandwidth &amp; Throughput</h3>
+         <p class="text-gray-300 text-sm leading-relaxed mb-3">Kapasitas transmisi data dalam jaringan.</p>
+         <div class="space-y-2 text-sm mb-3">
+          <p><strong class="text-green-400">Bandwidth:</strong> Kapasitas maksimal yang tersedia (teori). Contoh: ISP menjual 100 Mbps</p>
+          <p><strong class="text-cyan-400">Throughput:</strong> Data aktual yang terkirim (praktik). Biasanya lebih kecil dari bandwidth karena overhead</p>
+          <p><strong class="text-green-400">Latency:</strong> Delay waktu pengiriman data (milliseconds). Ideal &lt;50ms untuk gaming</p>
+          <p><strong class="text-cyan-400">Jitter:</strong> Variasi latency yang menyebabkan packet loss</p>
+         </div>
+         <div class="bg-gray-900/40 p-3 rounded-lg">
+          <p class="text-xs font-mono text-gray-300"><strong class="text-yellow-400">Rumus QoS:</strong> Throughput = Bandwidth × (1 - Packet Loss Rate)</p>
+         </div>
+        </div>
+       </div>
+      </div><!-- Card 8: Media Transmisi -->
+      <div class="card-glass rounded-2xl p-6 slide-in" style="animation-delay:0.8s">
+       <div class="flex items-start gap-4">
+        <div class="flex-shrink-0">
+         <svg width="60" height="60" viewbox="0 0 60 60">
+          <line x1="10" y1="15" x2="50" y2="15" stroke="#00ff88" stroke-width="3" stroke-linecap="round" /> <line x1="10" y1="30" x2="50" y2="30" stroke="#00ccff" stroke-width="3" stroke-linecap="round" /> <line x1="10" y1="45" x2="50" y2="45" stroke="#00ff88" stroke-width="3" stroke-linecap="round" /> <circle cx="8" cy="15" r="2.5" fill="#ffaa00" /> <circle cx="8" cy="30" r="2.5" fill="#ffaa00" /> <circle cx="8" cy="45" r="2.5" fill="#ffaa00" />
+         </svg>
+        </div>
+        <div>
+         <h3 class="font-orbitron text-lg text-green-400 mb-2">Media Transmisi</h3>
+         <p class="text-gray-300 text-sm leading-relaxed mb-3">Saluran fisik untuk pengiriman data antar perangkat.</p>
+         <div class="space-y-2 text-xs bg-gray-900/40 p-3 rounded-lg mb-3 font-mono">
+          <p><strong class="text-green-400">Twisted Pair:</strong> 2 kabel tembaga, mudah dipasang, jarak ~100m</p>
+          <p><strong class="text-cyan-400"> - UTP (Unshielded):</strong> Tanpa pelindung, murah, mudah gangguan EMI</p>
+          <p><strong class="text-green-400"> - STP (Shielded):</strong> Dengan pelindung, mahal, tahan interferensi</p>
+          <p><strong class="text-yellow-400">Coaxial:</strong> 1 kabel pusat + lapisan pelindung, panjang ~200m, jarang digunakan</p>
+          <p><strong class="text-cyan-400">Fiber Optic:</strong> Cahaya inframerah dalam tabung kaca, cepat, panjang km, mahal</p>
+          <p><strong class="text-green-400">Wireless:</strong> Gelombang radio/microwave, mobile, mudah gangguan</p>
+         </div>
+         <p class="text-gray-300 text-sm"><strong class="text-cyan-400">Cat Rating:</strong> Cat5e (100m), Cat6 (100m, lebih cepat), Cat7 (10Gbps)</p>
         </div>
        </div>
       </div>
@@ -173,9 +303,12 @@
     </div>
    </div><!-- SCREEN: Quiz -->
    <div id="screen-quiz" class="relative z-10 hidden min-h-full p-4 md:p-8">
-    <div class="max-w-2xl mx-auto"><!-- Quiz Header -->
-     <div class="flex items-center justify-between mb-6"><button onclick="goHome()" class="text-cyan-400 hover:text-white transition"> <i data-lucide="arrow-left" style="width:24px;height:24px"></i> </button>
-      <div class="flex items-center gap-4"><span id="quiz-score" class="font-orbitron text-green-400 text-lg">Score: 0</span> <span id="quiz-progress" class="text-gray-400 text-sm">1/15</span>
+    <div class="max-w-2xl mx-auto">
+     <!-- Quiz Header -->
+     <div class="flex items-center justify-between mb-6">
+      <button onclick="goHome()" class="text-cyan-400 hover:text-white transition"> <i data-lucide="arrow-left" style="width:24px;height:24px"></i> </button>
+      <div class="flex items-center gap-4">
+       <span id="quiz-score" class="font-orbitron text-green-400 text-lg">Score: 0</span> <span id="quiz-progress" class="text-gray-400 text-sm">1/15</span>
       </div>
      </div><!-- Progress Bar -->
      <div class="w-full h-2 bg-gray-800 rounded-full mb-8 overflow-hidden">
@@ -186,13 +319,15 @@
       <p id="quiz-question" class="font-orbitron text-lg md:text-xl text-white text-center"></p>
      </div><!-- Options -->
      <div id="quiz-options" class="space-y-3"></div><!-- Next Button -->
-     <div id="quiz-next" class="hidden text-center mt-6"><button onclick="nextQuestion()" class="btn-cyber px-8 py-3 rounded-xl font-orbitron text-sm">Selanjutnya →</button>
+     <div id="quiz-next" class="hidden text-center mt-6">
+      <button onclick="nextQuestion()" class="btn-cyber px-8 py-3 rounded-xl font-orbitron text-sm">Selanjutnya →</button>
      </div>
     </div>
    </div><!-- SCREEN: Match Game -->
    <div id="screen-match" class="relative z-10 hidden min-h-full p-4 md:p-8">
     <div class="max-w-3xl mx-auto">
-     <div class="flex items-center justify-between mb-6"><button onclick="goHome()" class="text-cyan-400 hover:text-white transition"> <i data-lucide="arrow-left" style="width:24px;height:24px"></i> </button> <span id="match-score" class="font-orbitron text-green-400 text-lg">Cocokkan: 0/5</span>
+     <div class="flex items-center justify-between mb-6">
+      <button onclick="goHome()" class="text-cyan-400 hover:text-white transition"> <i data-lucide="arrow-left" style="width:24px;height:24px"></i> </button> <span id="match-score" class="font-orbitron text-green-400 text-lg">Cocokkan: 0/5</span>
      </div>
      <h2 class="font-orbitron text-xl text-center text-cyan-400 mb-2">🔗 Cocokkan Topologi</h2>
      <p class="text-center text-gray-400 text-sm mb-6">Pilih topologi lalu pilih deskripsinya</p>
@@ -206,7 +341,8 @@
      <h2 id="result-title" class="font-orbitron text-2xl md:text-3xl text-green-400 mb-3"></h2>
      <p id="result-desc" class="text-gray-300 mb-2"></p>
      <p id="result-score" class="font-orbitron text-4xl text-white mb-6"></p>
-     <div class="flex flex-col sm:flex-row gap-3 justify-center"><button onclick="goHome()" class="btn-cyber px-6 py-3 rounded-xl font-orbitron text-sm">🏠 Menu Utama</button> <button onclick="startGame(lastMode)" class="px-6 py-3 rounded-xl font-orbitron text-sm border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400/10 transition">🔄 Main Lagi</button>
+     <div class="flex flex-col sm:flex-row gap-3 justify-center">
+      <button onclick="goHome()" class="btn-cyber px-6 py-3 rounded-xl font-orbitron text-sm">🏠 Menu Utama</button> <button onclick="startGame(lastMode)" class="px-6 py-3 rounded-xl font-orbitron text-sm border-2 border-cyan-400 text-cyan-400 hover:bg-cyan-400/10 transition">🔄 Main Lagi</button>
      </div>
     </div>
    </div>
@@ -526,5 +662,5 @@ window.elementSdk.init({
 
 lucide.createIcons();
 </script>
- <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9ef192ba762f6d1e',t:'MTc3NjY2MTA5OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9efa894ff7a70ad8',t:'MTc3Njc1NTA4NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
